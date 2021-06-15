@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "formidable": "^1.2.2",
+    "mongodb": "^3.6.4",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.1",
+    "utf8": "^3.0.0"
+  }
+}

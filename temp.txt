@@ -1,0 +1,9 @@
+-- call delete_TKSV('CN')
+
+
+-- call ShowInfor_DA('DA21042',25)  25 là mã chi tiết lấy từ ngoài cái lisst file vào 
+-- call ComboBox_SV('GVPT004','TK')
+
+ call ShowInfor_SV('N17DCPT004')
+
+-- call PhanCong_DA('GVPT004', 'N17DCPT004', 'DA21042', 25) 

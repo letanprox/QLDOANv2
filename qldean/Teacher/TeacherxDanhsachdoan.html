@@ -1,0 +1,337 @@
+<script>
+    $('title').append("Giảng viên - Danh sách đồ án");
+ 
+    window.onload = function(){
+        $('<script />', { type : 'text/javascript', src : "/qldean/js/TeacherJS/TeacherxDanhsachdoan.js"}).appendTo('head');
+        
+        $('<script />', { type : 'text/javascript', src : "/qldean/js/Responsive.js"}).appendTo('head');
+        $('<script />', { type : 'text/javascript', src : "/qldean/js/SupportTool.js"}).appendTo('head');
+        $('<script />', { type : 'text/javascript', src : "/qldean/js/EventClick.js"}).appendTo('head');
+    
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+    }
+</script>
+
+<div class="top-bar">
+
+    <div id="name-user">
+        GV: 
+    </div>
+
+
+    <div id="logout">
+        <svg class="icon-slide" height="20px"  style="margin: 1px 10px 0px 0px; float:left"  viewBox="0 0 24 24" width="20px">
+            <path d="m11 15c-1.654 0-3-1.346-3-3s1.346-3 3-3h5v-6.25c0-1.517-1.233-2.75-2.75-2.75h-10.5c-1.517 0-2.75 1.233-2.75 2.75v18.5c0 1.517 1.233 2.75 2.75 2.75h10.5c1.517 0 2.75-1.233 2.75-2.75v-6.25z"/><path d="m18.617 16.924c-.373-.155-.617-.52-.617-.924v-3h-7c-.552 0-1-.448-1-1s.448-1 1-1h7v-3c0-.404.244-.769.617-.924.374-.155.804-.069 1.09.217l4 4c.391.391.391 1.023 0 1.414l-4 4c-.286.286-.716.372-1.09.217z"/>
+        </svg>  
+        <span>Đăng xuất</span>
+    </div>
+</div> 
+
+
+<div class="left-bar">
+    <nav id="sidebar">
+        <ul class="list-unstyled components">
+    
+            <li id="act-danhsachdoan">
+    
+                <a href="/giangvien/danhsachdoan">                
+                    <svg class="icon-slide" height="20px"  style="margin: 1px 10px 0px 0px; float:left"  viewBox="0 0 388.227 388.227" width="20px">
+                        <path d="M271.422,30.844h-29.78c-3.716-0.115-6.909-2.67-7.837-6.269c-2.822-14.661-15.903-25.082-30.824-24.555
+                        c-15.011-0.263-28.028,10.327-30.824,25.078c-0.966,3.5-4.209,5.878-7.837,5.747h-28.735v52.245h135.837V30.844z"/>
+                    <path d="M355.014,382.974V83.611c0.032-11.83-9.533-21.446-21.363-21.478c-0.542-0.001-1.084,0.018-1.625,0.057h-44.931v26.645
+                        c0,4.18-2.612,9.927-6.792,9.927H126.181c-4.18,0-6.269-5.747-6.269-9.927V62.191H74.981
+                        c-11.798-0.866-22.065,7.997-22.93,19.796c-0.04,0.541-0.059,1.083-0.057,1.625v299.363
+                        c-0.292,12.981,9.995,23.741,22.976,24.032c0.004,0,0.008,0,0.012,0h257.045c12.981-0.285,23.273-11.04,22.988-24.021
+                        C355.014,382.982,355.014,382.978,355.014,382.974z M161.185,314.011l-40.751,38.139c-1.303,1.559-3.196,2.505-5.224,2.612
+                        c-2.183-0.086-4.246-1.024-5.747-2.612l-21.42-21.943c-2.847-3.188-2.614-8.069,0.522-10.971c3.047-2.987,7.924-2.987,10.971,0
+                        l15.673,16.718l35.527-33.437c3.562-2.458,8.443-1.564,10.901,1.998C163.643,307.421,163.457,311.309,161.185,314.011z
+                         M161.185,230.419L161.185,230.419l-40.751,38.139c-1.303,1.559-3.196,2.505-5.224,2.612c-2.183-0.086-4.246-1.024-5.747-2.612
+                        l-21.42-21.943c-2.847-3.188-2.614-8.069,0.522-10.971c3.047-2.987,7.924-2.987,10.971,0l15.673,16.718l35.527-33.437
+                        c3.562-2.458,8.443-1.564,10.901,1.998C163.643,223.829,163.457,227.717,161.185,230.419z M161.185,146.827l-40.751,38.139
+                        c-1.303,1.559-3.196,2.505-5.224,2.612c-2.183-0.086-4.246-1.024-5.747-2.612l-21.42-21.943
+                        c-2.847-3.188-2.614-8.069,0.522-10.971c3.047-2.987,7.924-2.987,10.971,0l15.673,16.718l35.527-33.437
+                        c3.562-2.458,8.443-1.564,10.901,1.998C163.643,140.237,163.457,144.125,161.185,146.827z M313.218,344.313H193.054
+                        c-4.328,0-7.837-3.509-7.837-7.837s3.509-7.837,7.837-7.837h120.163c4.328,0,7.837,3.509,7.837,7.837
+                        S317.546,344.313,313.218,344.313z M313.218,260.721H193.054c-4.328,0-7.837-3.509-7.837-7.837c0-4.328,3.509-7.837,7.837-7.837
+                        h120.163c4.328,0,7.837,3.509,7.837,7.837C321.054,257.212,317.546,260.721,313.218,260.721z M313.218,177.129H193.054
+                        c-4.328,0-7.837-3.509-7.837-7.837c0-4.328,3.509-7.837,7.837-7.837h120.163c4.328,0,7.837,3.509,7.837,7.837
+                        C321.054,173.621,317.546,177.129,313.218,177.129z"/>
+                    </svg>  
+                <span>Đồ án</span></a>
+            </li>
+            <li>
+                <a id="click-toggle-phancong" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Chấm điểm</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li id="act-huongdan">
+                        <a href="/giangvien/huongdan">
+                            <svg class="icon-slide" height="20px"  style="margin: -1px 10px 0px 0px; float:left"  viewBox="0 0  512 512" width="20px">
+                                <path d="m270.941 464.066c.005 0 .053-.013.059-.013v-359.957c-5.971-3.052-70.608-54.586-165.209-59.59l-15.791-.82v360.059l14.282.688c102.92 4.912 154.428 53.399 166.659 59.633z"/><path d="m301 97.724v360.137c22.513-3.966 55.939-8.304 96.021-8.005 62.986.469 102.818 11.926 114.979 13.889v-359.796c-4.937-.551-49.829-13.722-114.979-14.504-28.424-.342-60.975 1.828-96.021 8.279zm45 259.394v-176.045l132.041 88.022z"/><path d="m376 237.118v63.955l47.959-31.977z"/><path d="m190.113 452.538c-22.348-8.888-51.629-16.439-87.266-18.135l-42.847-2.065v-337.22c-34.493 5.127-52.932 10.668-60 12.259v360.938l18.633-4.673c55.651-13.896 114.591-17.522 171.48-11.104z"/>
+                            </svg>  
+                            <span>Hướng dẫn</span>
+                        </a>
+                    </li>
+                    <li id="act-phanbien">
+                        <a href="/giangvien/phanbien">
+                            <svg class="icon-slide" height="20px"  style="margin: -1px 10px 0px 0px; float:left"  viewBox="0 0  512 512" width="20px">
+                                <path d="m346 0c-90.981 0-165 75.019-165 166s74.019 165 165 165 166-74.019 166-165-75.019-166-166-166zm51.211 196-21.211 21.211-30-30-30 30-21.211-21.211 30-30-30-30 21.211-21.211 30 30 30-30 21.211 21.211-30 30z"/><path d="m151 397.211-51.211-51.211 21.211-21.211 30 30 54.448-54.448c-30.059-31.439-49.958-72.686-53.652-118.621-84.343 7.24-151.796 78.092-151.796 164.28 0 90.981 75.019 166 166 166 86.188 0 157.04-67.453 164.28-151.797-38.438-3.091-73.405-17.758-102.328-39.944z"/>
+                            </svg>  
+                            <span>Phản biện</span>
+                        </a>
+                    </li>
+                    <li id="act-tieuban">
+                        <a href="/giangvien/tieuban">
+                            <svg class="icon-slide" height="20px"  style="margin: 1px 10px 0px 0px; float:left"  viewBox="0 0 388.227 388.227" width="20px">
+                                <path d="M194.113,190.505c36.691,0,66.438-36.129,66.438-80.695c0-44.567-9.768-80.696-66.438-80.696
+                                c-56.672,0-66.438,36.129-66.438,80.696C127.676,154.376,157.422,190.505,194.113,190.505z"/>
+                            <path d="M319.455,310.459c-1.229-77.637-11.369-99.759-88.959-113.763c0,0-10.924,13.917-36.381,13.917
+                                c-25.457,0-36.379-13.917-36.379-13.917c-76.744,13.85-87.502,35.645-88.916,111.24c-0.115,6.173-0.168,6.497-0.189,5.78
+                                c0.004,1.343,0.01,3.826,0.01,8.157c0,0,18.473,37.239,125.475,37.239s125.477-37.239,125.477-37.239
+                                c0-2.782,0.002-4.718,0.004-6.033C319.576,316.283,319.533,315.424,319.455,310.459z"/>
+                            <path d="M286.313,176.097c29.801,0,53.959-29.343,53.959-65.539c0-36.197-7.932-65.54-53.959-65.54
+                                c-7.742,0-14.404,0.833-20.135,2.388c10.631,19.598,12.088,43.402,12.088,62.403c0,21.514-5.832,42.054-16.572,59.061
+                                C269.076,173.48,277.441,176.097,286.313,176.097z"/>
+                            <path d="M388.111,273.521c-1-63.055-9.234-81.022-72.252-92.396c0,0-8.871,11.304-29.547,11.304c-0.855,0-1.684-0.026-2.5-0.063
+                                c13.137,5.923,25.088,14.17,33.889,26.238c15.215,20.863,18.713,48.889,19.435,90.062c42.397-8.378,51.086-25.873,51.086-25.873
+                                c0-2.28,0-3.844,0.004-4.913C388.209,278.256,388.174,277.582,388.111,273.521z"/>
+                            <path d="M101.912,176.097c8.873,0,17.236-2.617,24.621-7.226c-10.74-17.007-16.572-37.547-16.572-59.061
+                                c0-19.002,1.457-42.806,12.086-62.403c-5.73-1.555-12.391-2.388-20.135-2.388c-46.027,0-53.957,29.343-53.957,65.54
+                                C47.955,146.754,72.113,176.097,101.912,176.097z"/>
+                            <path d="M104.412,192.365c-0.814,0.037-1.643,0.063-2.5,0.063c-20.676,0-29.547-11.304-29.547-11.304
+                                c-63.016,11.374-71.252,29.34-72.25,92.396c-0.065,4.062-0.098,4.735-0.115,4.358c0.002,1.069,0.004,2.633,0.004,4.913
+                                c0,0,8.69,17.495,51.084,25.873c0.725-41.172,4.221-69.198,19.438-90.062C79.326,206.536,91.275,198.288,104.412,192.365z"/>
+                            </svg>  
+                            <span>Tiểu ban</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li  id="act-taikhoan">
+                <a href="/giangvien/taikhoan">
+                    <svg class="icon-slide" height="20px"  style="margin:2px 9px 0px 1px; float:left"  viewBox="0 0   550 550" width="20px">
+                        <path d="M255,0C114.75,0,0,114.75,0,255s114.75,255,255,255s255-114.75,255-255S395.25,0,255,0z M255,76.5
+                        c43.35,0,76.5,33.15,76.5,76.5s-33.15,76.5-76.5,76.5c-43.35,0-76.5-33.15-76.5-76.5S211.65,76.5,255,76.5z M255,438.6
+                        c-63.75,0-119.85-33.149-153-81.6c0-51,102-79.05,153-79.05S408,306,408,357C374.85,405.45,318.75,438.6,255,438.6z"/>
+                    </svg>  
+                    <span>Tài khoản</span>
+                </a>
+            </li>
+        </ul>
+    
+    </nav>
+</div>
+
+
+<div class="content">
+
+    <div id="button-bar">
+    </div>
+
+    <div id="head-bar">
+    </div>
+
+    <div class="chose-bar">
+    </div>
+
+    <div class="switch-bar">
+    </div>
+ 
+    <div class="label-bar">
+    </div>
+
+    <table id="table_data">
+    </table>  
+
+     <div id="no-color-btn-follow-row" class="btn-follow-row">
+    </div>
+
+    <div class="Add-New-Row">
+    </div>
+
+    <div class="nav-page">
+    </div>
+
+    <div id="detail-bar">
+        <span id="thongtin-doan">
+            <span id="thongtin-doan-doan">
+                <div>Thông tin đồ án:</div>
+                <div>Mã: DA03</div>
+                <div>Tên: Lập trình AI</div>
+                <div>Chuyên ngành: Công nghệ phần cứng</div>
+                <div>Người tạo: cuoc song - GV0231</div>
+                <div>Ngày tạo: 23.12.1212</div>
+                <div style="color: rgb(107, 144, 185);">Tài liệu hướng dẫn:</div>
+                <span>Người cập nhật: Vo thanh liem - GV0312</span>
+                <span>Ngày cập nhật: 23.12.1212</span>
+                <span>Tệp: <a href="http://">xxvideio.txt</a> </span>
+                <span>Mô tả: Tệp văn bản, tệp chương trình, Tệp thuyền trình</span>
+                <span></span>
+                <span></span>
+            </span>
+        </span>
+
+        <span id="thongtin-sv">
+                <div>Thông tin sinh viên:</div>
+                <div>Mã: DA03</div>
+                <div>Tên: Lập trình AI</div>
+                <div>Ngày sinh: 23.12.1212</div>
+                <div>SDT: 01551551530</div>
+                <div>Email: cuocsong@gmail.com</div>
+                <div>Lớp: D182XCASD</div>
+                <div>Ngành: Công nghệ thông tin - Công nghệ phần mềm</div>
+                <div></div>
+        </span>
+
+        <select class="select-sinh-vien browser-default custom-select">
+            <option selected>N19DCCN195 - Lê Quốc Tấn</option>
+        </select>
+
+        <button class="phancong-sinhvien-doan-btn">Phân công</button>
+    </div>  
+
+
+
+
+
+    <input type="file" id="selectedFile" style="display: none;" /> 
+
+    
+    <!-- <div class="Detail-project">
+        <span id="info-sv">
+            <div>Thông tin sinh viên:</div>
+            <div>Mã: N18DCCN189</div>
+            <div>Tên: Nguyễn Thanh Ngọc</div>
+            <div>Lớp: D19CQCN02N</div>
+            <div>Email: N18CCN@.ptithcm.GAMIL.COM</div>
+            <div>GPA: 7</div>
+
+        </span>
+        <span id="info-doan">
+
+            <div>Thông tin đồ án:</div>
+            <div>Mã: DA03</div>
+            <div>Tên: Lập trình AI</div>
+
+            <span>GVHD: Lê Thị Thu Hương</span>  <span>Điểm: 10</span>
+            <span>GVPB: Đàm thị ngọc linh</span>  <span>Điểm: 9</span>
+            <span>Tiểu ban: TB19</span>  <span>Điểm trung bình: 8/3</span>
+
+        </span>
+
+
+        <span class="detail-doan">
+            <div>Chi tiết đồ án </div>
+
+            <div>
+                <span>xxxuploadfile.txt</span>   
+                <span>                
+                    <svg height="20px"    viewBox="0 0 512.171 512.171" width="20px">
+                    <path d="M479.046,283.925c-1.664-3.989-5.547-6.592-9.856-6.592H352.305V10.667C352.305,4.779,347.526,0,341.638,0H170.971
+                    c-5.888,0-10.667,4.779-10.667,10.667v266.667H42.971c-4.309,0-8.192,2.603-9.856,6.571c-1.643,3.989-0.747,8.576,2.304,11.627
+                    l212.8,213.504c2.005,2.005,4.715,3.136,7.552,3.136s5.547-1.131,7.552-3.115l213.419-213.504
+                    C479.793,292.501,480.71,287.915,479.046,283.925z"/>
+                </svg>  
+                </span>          
+            </div>
+            <div>
+                <span>uploadfile.txt</span>   
+                <span>                
+                    <svg height="20px"    viewBox="0 0 512.171 512.171" width="20px">
+                    <path d="M479.046,283.925c-1.664-3.989-5.547-6.592-9.856-6.592H352.305V10.667C352.305,4.779,347.526,0,341.638,0H170.971
+                    c-5.888,0-10.667,4.779-10.667,10.667v266.667H42.971c-4.309,0-8.192,2.603-9.856,6.571c-1.643,3.989-0.747,8.576,2.304,11.627
+                    l212.8,213.504c2.005,2.005,4.715,3.136,7.552,3.136s5.547-1.131,7.552-3.115l213.419-213.504
+                    C479.793,292.501,480.71,287.915,479.046,283.925z"/>
+                </svg>  
+                </span>               
+            </div>
+         <div>Chi tiết đồ án:</div> -->
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<div class="shadow-input-diem"></div>
+<div class="Form-input-file">
+
+    <div id="contain-form-group">
+        <form>
+            <div class="form-group">
+                <input id="tep-tai-lieu" type="file" name="file" class="form-control-file border">
+            </div>
+        </form>
+    </div>
+
+    <span class="up-file-tailieu"> 
+        <div id="check-box-baocao">
+            <span>Mô tả: </span> 
+            <span class="checkboxtag">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Tệp văn bản" id="flexCheckDefault">
+                    <label>Tệp văn bản</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Tệp trình chiếu" id="flexCheckDefault">
+                    <label>Tệp trình chiếu</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Tệp chương trình" id="flexCheckDefault">
+                    <label>Tệp chương trình</label>
+                </div>
+                <div class="form-check">
+                    <input id="check-khac" class="form-check-input" type="checkbox" value="khac">
+                    <label class="form-check-label" for="flexCheckDefault">Khác</label>
+                </div>
+                <input class="form-control input-more-checkbox" type="text" value="" style="display: none;">
+            </span>
+        </div>
+    </span>
+
+    <div style="float: left ;margin-left: 45px; margin-top: 30px;">
+        <span id="btn-nhap-diem">Xác nhận</span>
+        <span id="btn-thoat-diem">Thoát</span>
+    </div>
+</div>
+
+
+
+<style>
+#table_data{
+    margin-top: 0;
+}
+
+#activeswitchbar{
+    background-color: rgb(68, 67, 67);
+}
+
+
+.checkboxtag{
+    margin-top: 8px;
+}
+
+.form-check{
+    max-width: 100%;
+}
+
+.form-check-input{
+    clear: both;
+}
+.form-check label{
+    margin-bottom: 0;
+}
+
+.input-more-checkbox{
+    float: left;
+    width: 190px;
+    height: 25px;
+    margin-bottom: 10px;
+}
+
+.custom-select{
+    width: calc(50% - 10px);
+}
+
+</style>
