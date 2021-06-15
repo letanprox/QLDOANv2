@@ -9,7 +9,7 @@ $("#name-user").empty();
 $("#name-user").append('Admin: ' + getCookie('QLNAME'));
 var MaAdmin = getCookie('QL');
 
-var tieudeBangPB = ['Mã sinh viên','Tên sinh viên','Email','Điểm HD','Mã GVPB','Điểm'];
+var tieudeBangPB = ['Mã sinh viên','Tên sinh viên','Email','Điểm HD','Mã GVPB','Tên GVPB','Điểm'];
 var tennutBangPB = ['Phân công'];
 var idnutBangPB = ['phancongx'];
 
@@ -30,6 +30,7 @@ var listnghanh = [];
     var listmanganh = [];
     var listtennghanh = [];
 
+var textsearch = '';
 
 var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -83,7 +84,7 @@ var xhttp = new XMLHttpRequest();
 
 function loadListPhanbien(){
     console.log(nghanhcurrent)
-    xhttp.open("GET", "/api/danhsachphancongPB?page="+page_num+"&Khoa="+khoacurrent+"&MaAdmin="+MaAdmin+"&MaNghanh="+String(nghanhcurrent), false);
+    xhttp.open("GET", "/api/danhsachphancongPB?page="+page_num+"&Khoa="+khoacurrent+"&MaAdmin="+MaAdmin+"&MaNghanh="+String(nghanhcurrent)+"&textsearch="+textsearch, false);
     xhttp.send();
 }
 
@@ -335,12 +336,16 @@ function LoadChitietPhanbien() {
 function EventAdminClick(event) {
     var x = event.target;
     if( x.parentNode.className == "no-color-lum-table"){
+        
         $('.yes-color-lum-table').removeClass('yes-color-lum-table').addClass('no-color-lum-table');
-        if(khoacurrent == nienkhoahientai){
-            $('#no-color-btn-follow-row').attr("id", "yes-color-btn-follow-row");
-        }
         x.parentNode.className = 'yes-color-lum-table';
         currentrowtable = Number(x.parentNode.id.replace('collumtalbe-',''));
+        if(khoacurrent == nienkhoahientai && String(listinfoitem[currentrowtable].DiemPB) == ''){
+            $('#no-color-btn-follow-row').attr("id", "yes-color-btn-follow-row");
+        }else{
+            $('#yes-color-btn-follow-row').attr("id", "no-color-btn-follow-row");
+        }
+
     }else if(x.parentNode.className == 'btn-follow-row'){
         if(x.id == "phancongx" ){
             if(khoacurrent == nienkhoahientai){

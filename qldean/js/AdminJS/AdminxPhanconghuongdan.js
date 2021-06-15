@@ -9,7 +9,7 @@ $("#name-user").empty();
 $("#name-user").append('Admin: ' + getCookie('QLNAME'));
 var MaAdmin = getCookie('QL');
 
-var tieudeBangHD = ['Mã sinh viên','Tên sinh viên','Email','GPA','Mã GVHD','Điểm'];
+var tieudeBangHD = ['Mã sinh viên','Tên sinh viên','Email','GPA','Mã GVHD','Tên GVHD','Điểm'];
 var tennutBangHD = ['Phân công'];
 var idnutBangHD = ['phancongx'];
 
@@ -35,13 +35,13 @@ var listnghanh = [];
 
 var textsearch = '';
 
-
 var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
                 if(String(this.responseURL).includes('api/danhsachphancongHD')){
                     var data = JSON.parse(this.responseText);
 
+                    console.log(data)
 
                     listnghanh = data[0];
                     listkhoa = [];
@@ -311,12 +311,16 @@ function EventAdminClick(event) {
     var x = event.target;
     if( x.parentNode.className == "no-color-lum-table"){
 
-        $('.yes-color-lum-table').removeClass('yes-color-lum-table').addClass('no-color-lum-table');
-        if(khoacurrent == nienkhoahientai){
-        $('#no-color-btn-follow-row').attr("id", "yes-color-btn-follow-row");
-        }
-        x.parentNode.className = 'yes-color-lum-table';
         currentrowtable = Number(x.parentNode.id.replace('collumtalbe-',''));
+        $('.yes-color-lum-table').removeClass('yes-color-lum-table').addClass('no-color-lum-table');
+        x.parentNode.className = 'yes-color-lum-table';
+        if(khoacurrent == nienkhoahientai && String(listinfoitem[currentrowtable].Diem) == ''){
+            $('#no-color-btn-follow-row').attr("id", "yes-color-btn-follow-row");
+        }else{
+            $('#yes-color-btn-follow-row').attr("id", "no-color-btn-follow-row");
+        }
+     
+
    
     }else if(x.parentNode.className == 'btn-follow-row'){
         if(x.id == "phancongx" ){

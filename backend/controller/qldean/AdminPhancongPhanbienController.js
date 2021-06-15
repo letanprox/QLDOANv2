@@ -22,6 +22,7 @@ module.exports = async (callback, scanner) => {
         let MaNghanh = String(head_params.get('MaNghanh')).trim();
         let Khoa = Number(head_params.get('Khoa'));
 
+        let textsearch = String(head_params.get('textsearch'));
         console.log(MaNghanh)
         
         let listNganh;
@@ -75,8 +76,8 @@ module.exports = async (callback, scanner) => {
                 listKhoa = listKhoa[0];
             }
   
-            let count = await Model.InleSQL("select COUNTList_SvDAPB('"+Khoa+"','"+MaNghanh+"') AS NumberSV");
-            let select = await Model.InleSQL("call ShowList_SvDAPB('"+Khoa+"','"+MaNghanh+"',"+page*limit+")");
+            let count = await Model.InleSQL("select COUNTList_SvDAPB('"+Khoa+"','"+MaNghanh+"','"+textsearch+"') AS NumberSV");
+            let select = await Model.InleSQL("call ShowList_SvDAPB('"+Khoa+"','"+MaNghanh+"','"+textsearch+"',"+page*limit+")");
             let niemkhoahientai = await Model.InleSQL("select nienkhoahientai('"+MaNghanh+"') AS nienkhoahientai");
 
             let data = [];
@@ -116,8 +117,8 @@ module.exports = async (callback, scanner) => {
             listKhoa = await Model.InleSQL("call ComboBox_Khoa('"+MaNghanh+"')");
             listKhoa = listKhoa[0];
   
-            let count = await Model.InleSQL("select CountList_SvDAPB('"+Khoa+"','"+MaNghanh+"') AS NumberSV");
-            let select = await Model.InleSQL("call ShowList_SvDAPB('"+Khoa+"','"+MaNghanh+"',"+page*limit+")");
+            let count = await Model.InleSQL("select CountList_SvDAPB('"+Khoa+"','"+MaNghanh+"','"+textsearch+"') AS NumberSV");
+            let select = await Model.InleSQL("call ShowList_SvDAPB('"+Khoa+"','"+MaNghanh+"','"+textsearch+"',"+page*limit+")");
             let niemkhoahientai = await Model.InleSQL("select nienkhoahientai('"+MaNghanh+"') AS nienkhoahientai");
 
 
@@ -144,6 +145,7 @@ module.exports = async (callback, scanner) => {
         let result = await Model.InleSQL("call ShowInfor_SVPB('"+MaSV+"')");
         let result1 = await Model.InleSQL("call ComboBox_PhanCongGVPB('"+MaNghanh+"', '"+MaSV+"');");
 
+        console.log("call ShowInfor_SVPB('"+MaSV+"')")
         let data = [];
         data.push(result)
         data.push(result1)

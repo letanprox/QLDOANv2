@@ -114,6 +114,10 @@ module.exports = async (callback, scanner) => {
         listChuyennganh = await Model.InleSQL("call ComboBox_CN_GV('"+MaGV+"')");
         listChuyennganh = listChuyennganh[0];
 
+        let ishaveGV = false;
+
+        console.log(MaChuyennganh+'xxx')
+
     if(MaChuyennganh === '' || String(MaChuyennganh) === 'null'){
 
         lineReader = readline.createInterface({
@@ -121,26 +125,34 @@ module.exports = async (callback, scanner) => {
         });
         lineReader.on('line', function (line) {
             if(String(line).includes(MaGV)) {
+                ishaveGV = true;
                 MaChuyennganhtemp = String(line.split(',')[1]);
             }
         });
         lineReader.on('close', async function () {
             console.log(MaChuyennganhtemp);
-            if(MaChuyennganhtemp === '#'){
-                MaChuyennganh = listChuyennganh[0].MaCN;
-
-                fs.readFile("controller/qldean/Text/TeacherStatus.txt", 'utf8', function (err,data) {
-                    let formatted = data.replace( String(MaGV+','+MaChuyennganhtemp),String(MaGV+','+MaChuyennganh));
-                    fs.writeFile("controller/qldean/Text/TeacherStatus.txt", '', 'utf8', function (err) {
-                        if (err) return console.log(err);
-                        fs.writeFile("controller/qldean/Text/TeacherStatus.txt", formatted, 'utf8', function (err) {
+            if(ishaveGV == true){
+                if(MaChuyennganhtemp === '#'){
+                    MaChuyennganh = listChuyennganh[0].MaCN;
+                
+                    fs.readFile("controller/qldean/Text/TeacherStatus.txt", 'utf8', function (err,data) {
+                        let formatted = data.replace( String(MaGV+','+MaChuyennganhtemp),String(MaGV+','+MaChuyennganh));
+                        fs.writeFile("controller/qldean/Text/TeacherStatus.txt", '', 'utf8', function (err) {
                             if (err) return console.log(err);
+                            fs.writeFile("controller/qldean/Text/TeacherStatus.txt", formatted, 'utf8', function (err) {
+                                if (err) return console.log(err);
+                            });
                         });
                     });
-                });
 
+                }else{
+                    MaChuyennganh = MaChuyennganhtemp;
+                }
             }else{
-                MaChuyennganh = MaChuyennganhtemp;
+                MaChuyennganh = listChuyennganh[0].MaCN;
+                fs.appendFile("controller/qldean/Text/TeacherStatus.txt", String(MaGV+','+MaChuyennganh+','), function (err) {
+                    if (err) return console.log(err);
+                  })
             }
 
             let count = await Model.InleSQL("SELECT CountList_DAofGV('"+MaGV+"','"+MaChuyennganh+"','"+textsearch+"') AS Number;");
@@ -156,6 +168,7 @@ module.exports = async (callback, scanner) => {
         });
 
     }else{
+
         lineReader = readline.createInterface({
             input: fs.createReadStream('controller/qldean/Text/TeacherStatus.txt')
         });
@@ -201,31 +214,86 @@ module.exports = async (callback, scanner) => {
         let limit = 10;
         let page = Number(head_params.get('page')) - 1;
 
-        let count = await Model.InleSQL("SELECT CountList_DAofGV('"+MaGV+"','"+MaChuyennganh+"','"+textsearch+"') AS Number;");
-        let select = await Model.InleSQL("call ShowList_DAofGV('"+MaGV+"','"+MaChuyennganh+"','"+textsearch+"',"+limit*page+");");
+        let MaChuyennganhtemp;
 
-        let data = [];
-        data.push(count);
-        data.push(select);
+        lineReader = readline.createInterface({
+            input: fs.createReadStream('controller/qldean/Text/TeacherStatus.txt')
+        });
+        lineReader.on('line', function (line) {
+            if(String(line).includes(MaGV)) {
+                MaChuyennganhtemp = String(line.split(',')[1]).trim();
+            }
+        });
+        
+        lineReader.on('close', async function () {
 
-        callback(JSON.stringify(data), 'application/json');
+            fs.readFile("controller/qldean/Text/TeacherStatus.txt", 'utf8', function (err,data) {
+                let formatted = data.replace(  String(MaGV+','+MaChuyennganhtemp),String(MaGV+','+MaChuyennganh));
+                fs.writeFile("controller/qldean/Text/TeacherStatus.txt", '', 'utf8', function (err) {
+                    if (err) return console.log(err);
+                    fs.writeFile("controller/qldean/Text/TeacherStatus.txt", formatted, 'utf8', function (err) {
+                        if (err) return console.log(err);
+                    });
+                });
+            });
+
+            let count = await Model.InleSQL("SELECT CountList_DAofGV('"+MaGV+"','"+MaChuyennganh+"','"+textsearch+"') AS Number;");
+            let select = await Model.InleSQL("call ShowList_DAofGV('"+MaGV+"','"+MaChuyennganh+"','"+textsearch+"',"+limit*page+");");
+    
+            let data = [];
+            data.push(count);
+            data.push(select);
+    
+            callback(JSON.stringify(data), 'application/json');
+        });
+
+
+
+
     }
 
     if (index === 'danhsachdoan-tatca'){
 
+        let MaGV = String(head_params.get('MaGV')).trim();
         let MaChuyennganh = String(head_params.get('MaChuyennganh')).trim();
         let textsearch = String(head_params.get('textsearch'));
         let limit = 10;
         let page = Number(head_params.get('page')) - 1;
 
-        let count = await Model.InleSQL("select CountList_DA('"+MaChuyennganh+"','"+textsearch+"') AS Number;");
-        let select = await Model.InleSQL("call ShowList_DA('"+MaChuyennganh+"','"+textsearch+"',"+limit*page+");");
 
-        let data = [];
-        data.push(count);
-        data.push(select);
+        let MaChuyennganhtemp;
 
-        callback(JSON.stringify(data), 'application/json');
+        lineReader = readline.createInterface({
+            input: fs.createReadStream('controller/qldean/Text/TeacherStatus.txt')
+        });
+        lineReader.on('line', function (line) {
+            if(String(line).includes(MaGV)) {
+                MaChuyennganhtemp = String(line.split(',')[1]).trim();
+            }
+        });
+
+        lineReader.on('close', async function () {
+
+            fs.readFile("controller/qldean/Text/TeacherStatus.txt", 'utf8', function (err,data) {
+                let formatted = data.replace(  String(MaGV+','+MaChuyennganhtemp),String(MaGV+','+MaChuyennganh));
+                fs.writeFile("controller/qldean/Text/TeacherStatus.txt", '', 'utf8', function (err) {
+                    if (err) return console.log(err);
+                    fs.writeFile("controller/qldean/Text/TeacherStatus.txt", formatted, 'utf8', function (err) {
+                        if (err) return console.log(err);
+                    });
+                });
+            });
+
+            let count = await Model.InleSQL("select CountList_DA('"+MaChuyennganh+"','"+textsearch+"') AS Number;");
+            let select = await Model.InleSQL("call ShowList_DA('"+MaChuyennganh+"','"+textsearch+"',"+limit*page+");");
+    
+            let data = [];
+            data.push(count);
+            data.push(select);
+    
+            callback(JSON.stringify(data), 'application/json');
+
+        });
     }
 
     if(index === 'danhsachtailieu'){

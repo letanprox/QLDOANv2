@@ -181,7 +181,7 @@ module.exports = async (callback, scanner) => {
         let today = new Date();
         let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
-        if(Date.parse(ngay) > Date.parse(date)) {
+        if(Date.parse(ngay) < Date.parse(date)) {
             callback(JSON.stringify({ success: false, message: "Thời gian TB không thể trước ngày hiện tại"}), 'application/json');
             return;
         }
@@ -201,7 +201,7 @@ module.exports = async (callback, scanner) => {
 
         let today = new Date();
         let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        if(Date.parse(ngay) > Date.parse(date)) {
+        if(Date.parse(ngay) < Date.parse(date)) {
             callback(JSON.stringify({ success: false, message: "Thời gian TB không thể trước ngày hiện tại"}), 'application/json');
             return;
         }
