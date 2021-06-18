@@ -418,7 +418,7 @@ module.exports = async (callback, scanner) => {
         let limit = 10;
         let page = Number(head_params.get('page')) - 1;
         let result = await Model.InleSQL("call ShowList_SVPB_GV('"+MaGV+"','"+textsearch+"',"+page*limit+");");
-        let count = await Model.InleSQL("select CountList_SVPB_GV('"+MaGV+",'"+textsearch+"'') AS Number");
+        let count = await Model.InleSQL("select CountList_SVPB_GV('"+MaGV+"','"+textsearch+"'') AS Number");
         callback(JSON.stringify([result, count]), 'application/json');
     }
     if(index === 'loadChamdiemphanbien'){
