@@ -222,7 +222,7 @@ function LoadPhancongTieuban(data) {
                 '<div>Thông tin sinh viên:</div>'+
                 '<div>Mã: '+InfoSV.MaSV+'</div>'+
                 '<div>Tên: '+InfoSV.TenSV+'</div>'+
-                '<div>Ngày sinh: '+InfoSV.NgaySinh.replace('T17:00:00.000Z','')+'</div>'+
+                '<div>Ngày sinh: '+getDateFormat(InfoSV.NgaySinh)+'</div>'+
                 '<div>SDT: '+InfoSV.SDT+'</div>'+
                 '<div>Email: '+InfoSV.Email+'</div>'+
                 '<div>Lớp: '+InfoSV.MaLop+'</div>'+
@@ -296,7 +296,7 @@ function LoadInfoTB(data){
         '<div>Thông tin tiểu ban:</div>'+
         '<div>Mã: '+infotb.MaTB+'</div>'+
         '<div>Tên: '+infotb.Ca+'</div>'+
-        '<div>Ngày: '+infotb.Ngay.replace('T17:00:00.000Z','')+'</div>'+
+        '<div>Ngày: '+getDateFormat(infotb.Ngay)+'</div>'+
         '<div>Thành phần: </div>'
         // '<div>Email: '+infotb.Email+'</div>'+
     )

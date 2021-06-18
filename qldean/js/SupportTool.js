@@ -145,3 +145,96 @@ function iOS() {
 function isNumeric(num){
   return !isNaN(num)
 }
+
+function getDateFormat(data){
+  today = new Date(data);
+  // return date.getDate()+'-' + (date.getMonth()+1) + '-'+date.getFullYear();
+
+  var Moth;
+  var Day;
+
+  if(Number(today.getMonth()+1) < 10){
+    Moth = '0'+Number(today.getMonth()+1)
+  }else{
+    Moth = Number(today.getMonth()+1);
+  }
+
+  if(Number(today.getDate()) < 10){
+    Day = '0'+Number(today.getDate())
+  }else{
+    Day = Number(today.getDate());
+  }
+  var date =  Day +'-'+Moth+'-'+today.getFullYear();
+  return date;
+
+
+}
+
+function getDateFormatx(data){
+  today = new Date(data);
+  // return date.getDate()+'-' + (date.getMonth()+1) + '-'+date.getFullYear();
+
+  var Moth;
+  var Day;
+
+  if(Number(today.getMonth()+1) < 10){
+    Moth = '0'+Number(today.getMonth()+1)
+  }else{
+    Moth = Number(today.getMonth()+1);
+  }
+
+  if(Number(today.getDate()) < 10){
+    Day = '0'+Number(today.getDate())
+  }else{
+    Day = Number(today.getDate());
+  }
+  var date =  today.getFullYear() +'-'+Moth+'-'+ Day;
+  return date;
+
+
+}
+
+
+function getDateTimeFormat(data){
+  var today = new Date(data);
+
+  var Moth;
+  var Day;
+  var Gio;
+  var Phut;
+  var Giay;
+
+  if(Number(today.getMonth()+1) < 10){
+    Moth = '0'+Number(today.getMonth()+1)
+  }else{
+    Moth = Number(today.getMonth()+1);
+  }
+
+  if(Number(today.getDate()) < 10){
+    Day = '0'+Number(today.getDate())
+  }else{
+    Day = Number(today.getDate());
+  }
+
+  if(Number(today.getHours()) < 10){
+    Gio = '0'+Number(today.getHours())
+  }else{
+    Gio = Number(today.getHours());
+  }
+
+  if(Number(today.getMinutes()) < 10){
+    Phut = '0'+Number(today.getMinutes())
+  }else{
+    Phut = Number(today.getMinutes());
+  }
+
+  if(Number(today.getSeconds()) < 10){
+    Giay = '0'+Number(today.getSeconds())
+  }else{
+    Giay = Number(today.getSeconds());
+  }
+
+  var date = today.getFullYear()+'-'+Moth+'-'+Day;
+  var time = Gio + ":" + Phut + ":" + Giay;
+  return date+' '+time;
+}

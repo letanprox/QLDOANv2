@@ -168,8 +168,8 @@ function loadAddListTieuban() {
 
 function addTieuban() {
     var thoigiantieuban = document.getElementsByClassName('thoigianform').item(0).value;
-    thoigiantieuban = String(thoigiantieuban).split('T')
-    var ngay = thoigiantieuban[0];
+    thoigiantieuban = getDateFormatx(String(thoigiantieuban)) 
+    var ngay = thoigiantieuban;
     var e = document.getElementsByClassName("combo-box-add-long ").item(0);
     ca = String(e.options[e.selectedIndex].value);
     if(String(ngay) !== ''){
@@ -182,8 +182,8 @@ function addTieuban() {
 
 function updateListTieuban() {
     var thoigiantieuban = document.getElementsByClassName('thoigianform').item(0).value;
-    thoigiantieuban = String(thoigiantieuban).split('T')
-    var ngay = thoigiantieuban[0];
+    thoigiantieuban = getDateFormatx(String(thoigiantieuban)) 
+    var ngay = thoigiantieuban;
     var e = document.getElementsByClassName("combo-box-add-long ").item(0);
     ca = String(e.options[e.selectedIndex].value);
     if(String(ngay) !== ''){
@@ -195,8 +195,7 @@ function updateListTieuban() {
 }
 
 function loadphancongtieuban(){
-    ngaytemp = String(listinfoitem[currentrowtable].Ngay).split('T')
-    ngaytemp = ngaytemp[0];
+    ngaytemp = String(getDateFormatx(String(listinfoitem[currentrowtable].Ngay)));
     catemp = listinfoitem[currentrowtable].Ca;
     xhttp.open("GET", "/api/danhsachGVphancongTB?ngay="+ngaytemp+"&ca="+catemp+"&MaNghanh="+nghanhcurrent+"&MaTB="+maTB, false);
     xhttp.send();
@@ -229,11 +228,6 @@ function changeKhoaandNghanh(){
     khoacurrent = e.options[e.selectedIndex].value;
     console.log("mới tạo "+nghanhcurrent,khoacurrent)
     loadListTieuban();
-    // if(isAddTieuban == false){
-    //     loadListTieuban();
-    // }else{
-    //     loadAddListTieuban()
-    // }
 }
 function changesearch(s){
     // currentlist = 2;
@@ -258,7 +252,7 @@ function LoadListTieuban(data) {
         if(Number(data[i].sum) != 5 && Number(data[i].sum) !=3 ) dk = 'Chưa phân công';
         else if(Number(data[i].sum)==5) dk = 'Hoàn thành';
         else if(Number(data[i].sum)==3) dk = 'Hoàn thành';
-        listTB.push({maTB: data[i].MaTB, ngay: data[i].Ngay, ca: data[i].Ca, sum: dk})
+        listTB.push({maTB: data[i].MaTB, ngay: getDateFormat(data[i].Ngay), ca: data[i].Ca, sum: dk})
     }
 
     $('#button-bar').show();
@@ -292,25 +286,6 @@ function LoadListTieuban(data) {
 }
 
 
-// function LoadListDataTieuban(data){
-//     currentlist = 1;
-//     isAddTieuban = false;
-//     let listTB = [];
-//     let dk;
-//     for(let i = 0; i< data.length;i++){
-//         if(Number(data[i].sum) != 5 && Number(data[i].sum) !=3 ) dk = 'Chưa phân công';
-//         else if(Number(data[i].sum)==5) dk = 'Hoàn thành';
-//         else if(Number(data[i].sum)==3) dk = 'Hoàn thành';
-//         listTB.push({maTB: data[i].MaTB, ngay: data[i].Ngay, ca: data[i].Ca, sum: dk})
-//     }
-//     $('#table_data').empty();
-//     $('.btn-follow-row').empty();
-//     $('.nav-page').empty();
-
-//     $('#table_data').append(returnTable( ['Tiểu ban','Ngày','Giờ','Trạng thái'],listTB));
-//     $('.btn-follow-row').append(returnButtonTable(tennutBangTieuban,idnutBangTieuban));
-//     $('.nav-page').append(returNavForm(tol_page+1, page_num));
-// }
 
 
 function LoadAddFormTieuban(maTB){
@@ -352,7 +327,7 @@ function LoadSuaTieuban(listData) {
     $('#button-bar').append(returnIconHome() + returnNameIndex('Quản lý tiểu ban') + returnNameIndex('Sửa') +  returnReturnBtn());
     $('.Add-New-Row').append(returnFormLabelInfo('Mã tiểu ban', listData.MaTB));
     maTB = listData.MaTB;
-    var ngay = listData.Ngay.replace('T17:00:00.000Z', '');
+    var ngay = getDateFormatx(listData.Ngay) 
     console.log(ngay)
     $('.Add-New-Row').append(returnFormInputTime('Thời gian',2,ngay));
     $('.Add-New-Row').append(returnFormInputSelect('Chọn ca', 'chonca' , ['SA','CH'], ['ca sáng', 'ca chiều'], listData.Ca));

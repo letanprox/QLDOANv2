@@ -198,7 +198,7 @@ var xhttp = new XMLHttpRequest();
                 }
                 if(String(this.responseURL).includes('api/xoasv')){
                     if(String(this.responseText) == '"that bai"')
-                        alert('Fail')
+                        alert('Sinh viên đã được phân công!')
                     else loadListSinhvien();
                 }
 
@@ -285,8 +285,8 @@ function addSinhvien() {
     
 
     var thoigiantieuban = document.getElementsByClassName('thoigianform').item(0).value;
-    thoigiantieuban = String(thoigiantieuban).split('T')
-    var ngay = thoigiantieuban[0];
+    thoigiantieuban = String(getDateFormatx(String(thoigiantieuban)));
+    var ngay = thoigiantieuban;
 
     console.log( "/api/themsv?MaSV="+maSV+"&TenSV="+tensv+"&NgaySinh="+ngay+"&Lop="+lop+"&chuyennganh="+chuyennganh+"&GPA="+GPA+"&Email="+EmailSV+"&SDT="+SDT+"&Khoa="+khoacurrent)
     xhttp.open("GET", "/api/themsv?MaSV="+maSV+"&TenSV="+tensv+"&NgaySinh="+ngay+"&Lop="+lop+"&MaNghanh="+nghanhcurrent+"&GPA="+GPA+"&Email="+EmailSV+"&SDT="+SDT+"&Khoa="+khoacurrent, false);
@@ -302,22 +302,26 @@ function updateListSinhvien() {
 
     var lop;
     if(document.getElementsByClassName('label-item-add').item(4).style.display === "none"){
-        var e = document.getElementsByClassName('combo-box-add-long').item(1);
-         lop = e.options[e.selectedIndex].value;
+        if(document.getElementsByClassName('combo-box-add-long').item(1)){
+            var e = document.getElementsByClassName('combo-box-add-long').item(1);
+            lop = e.options[e.selectedIndex].value;
+        }else{
+            var e = document.getElementsByClassName('combo-box-add-long').item(0);
+            lop = e.options[e.selectedIndex].value;
+        }
+
     }else{
          lop = String(document.getElementsByClassName('label-item-add').item(4).innerHTML);
     }
     
-
     var thoigiantieuban = document.getElementsByClassName('thoigianform').item(0).value;
-    thoigiantieuban = String(thoigiantieuban).split('T')
-    var ngay = thoigiantieuban[0];
+    thoigiantieuban = String(getDateFormatx(String(thoigiantieuban)));
+    var ngay = thoigiantieuban;
 
-    console.log(itemSV.MaSV,tensv,ngay,lop,GPA)
+    console.log(itemSV.MaSV,tensv,ngay,lop,GPA);
 
     xhttp.open("GET", "/api/suasv?MaSV="+itemSV.MaSV+"&TenSV="+tensv+"&NgaySinh="+ngay+"&Lop="+lop+"&GPA="+GPA+"&SDT="+SDT, false);
     xhttp.send();
-
 }
 
 function changeKhoa(){
@@ -404,13 +408,10 @@ function LoadListSinhvien(data) {
         $('.chose-bar').empty();
         $('.chose-bar').append(returnSearchForm('Nhập sinh viên','Làm mới') );    
     }
-
     $('#table_data').append(returnTable(tieudeBangSinhvien,data));
     $('.btn-follow-row').append(returnButtonTable(tennutBangSinhvien,idnutBangSinhvien));
     $('.nav-page').append(returNavForm(tol_page+1, page_num));
-
     if(ismokhoa == true) loadAddListSinhvien();
-
 }
 
 function LoadComboxLop(){
@@ -504,7 +505,7 @@ function LoadSuaFormSinhvien(listData,checkChuyennganh) {
     $('.Add-New-Row').append(returnFormLabelInfo('Nghành',listtennghanh[listmanganh.indexOf(nghanhcurrent)]));
     $('.Add-New-Row').append(returnFormInputTextLength('Tên',listData.TenSV ));
 
-    $('.Add-New-Row').append(returnFormInputTime('Ngày sinh',2,listData.NgaySinh.replace('T17:00:00.000Z','')));
+    $('.Add-New-Row').append(returnFormInputTime('Ngày sinh',2,getDateFormatx(listData.NgaySinh)));
     $('.Add-New-Row').append(returnFormLabelInfo('Email',listData.Email));
     $('.Add-New-Row').append(returnFormInputTextLength('SDT',listData.SDT ));
 

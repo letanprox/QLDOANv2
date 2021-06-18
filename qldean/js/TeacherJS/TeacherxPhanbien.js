@@ -206,7 +206,7 @@ function LoadChamdiemphanbien(infosv,infodoan,infodiem,infobaocaofile){
             '<div>Thông tin sinh viên:</div>'+
             '<div>Mã: '+infosv.MaSV+'</div>'+
             '<div>Tên: '+infosv.TenSV+'</div>'+
-            '<div>Ngày sinh: '+infosv.NgaySinh.replace('T17:00:00.000Z','')+'</div>'+
+            '<div>Ngày sinh: '+getDateFormat(infosv.NgaySinh)+'</div>'+
             '<div>SDT: '+infosv.SDT+'</div>'+
             '<div>Lớp: '+infosv.MaLop+'</div>'+
             '<div>Email: '+infosv.Email+'</div>'+

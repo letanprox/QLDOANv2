@@ -237,9 +237,9 @@ function chuyendoiBangdoantatca(data){
         else  status = 'Đã phân công';
 
         if(String(data[i].MaSV) === 'null')
-        listdoantatca.push({Doan: String(data[i].MaDA+' - '+data[i].TenDA) , CN: String(data[i].MaCN+' - '+data[i].tenCN), Nguoitao: String(data[i].MaGV+' - '+data[i].TenGV) , Ngaytao: String(data[i].minThoiGian).replace('T',' '), Capnhatcuoi: String(data[i].maxThoiGian) , Trangthai:'' })
+        listdoantatca.push({Doan: String(data[i].MaDA+' - '+data[i].TenDA) , CN: String(data[i].MaCN+' - '+data[i].tenCN), Nguoitao: String(data[i].MaGV+' - '+data[i].TenGV) , Ngaytao: getDateFormat(String(data[i].minThoiGian)), Capnhatcuoi: getDateFormat(String(data[i].maxThoiGian)) , Trangthai:'' })
         else
-        listdoantatca.push({Doan: String(data[i].MaDA+' - '+data[i].TenDA) , CN: String(data[i].MaCN+' - '+data[i].tenCN), Nguoitao: String(data[i].MaGV+' - '+data[i].TenGV) , Ngaytao: String(data[i].minThoiGian).replace('T',' '), Capnhatcuoi: String(data[i].maxThoiGian) , Trangthai: String(data[i].MaSV) +' - ' + String(data[i].TenSV) })
+        listdoantatca.push({Doan: String(data[i].MaDA+' - '+data[i].TenDA) , CN: String(data[i].MaCN+' - '+data[i].tenCN), Nguoitao: String(data[i].MaGV+' - '+data[i].TenGV) , Ngaytao: getDateFormat(String(data[i].minThoiGian)), Capnhatcuoi: getDateFormat(String(data[i].maxThoiGian)) , Trangthai: String(data[i].MaSV) +' - ' + String(data[i].TenSV) })
 
     }
     return listdoantatca;
@@ -254,9 +254,9 @@ function chuyendoiBangdoancanhan(data){
 
 
         if(String(data[i].MaSV) === 'null')
-        bangcanhan.push({madoan: data[i].MaDA, Tendoan: data[i].TenDA, ngaytao:data[i].ThoiGian.replace('T',' '), trangthai: ''})
+        bangcanhan.push({madoan: data[i].MaDA, Tendoan: data[i].TenDA,ngaytao:getDateFormat(data[i].ThoiGian), trangthai: ''})
         else 
-        bangcanhan.push({madoan: data[i].MaDA, Tendoan: data[i].TenDA, ngaytao:data[i].ThoiGian.replace('T',' '), trangthai:  String(data[i].MaSV) +' - ' + String(data[i].TenSV)})
+        bangcanhan.push({madoan: data[i].MaDA, Tendoan: data[i].TenDA, ngaytao:getDateFormat(data[i].ThoiGian), trangthai:  String(data[i].MaSV) +' - ' + String(data[i].TenSV)})
     }
     return bangcanhan;
 }
@@ -653,7 +653,7 @@ function LoadTailieu(data,Checkcanhan){
         if(data[i].Loai === 0) trangthai =  '<svg style="margin-right:13px"  height="20px"  viewBox="0 0 512 512" width="20px"><path style="fill:#FDA429;" d="M463.813,482H29.988L4.382,507.607C7.096,510.322,10.846,512,14.988,512h448.825 c8.284,0,15-6.716,15-15S472.097,482,463.813,482z"/><path style="fill:#FD6B82;" d="M507.594,119.527L392.461,4.393c-5.857-5.858-15.355-5.858-21.213,0L315.772,59.87 c-5.858,5.858-5.858,15.355,0,21.213l115.134,115.134c5.854,5.855,15.357,5.857,21.213,0l55.476-55.476 C513.453,134.882,513.453,125.384,507.594,119.527z"/><path style="fill:#FC495C;" d="M450.028,61.96l-76.689,76.689l57.567,57.567c5.854,5.855,15.357,5.857,21.213,0l55.476-55.476 c5.858-5.858,5.858-15.355,0-21.213L450.028,61.96z"/><path style="fill:#FAD557;" d="M455.798,190.189l-55.24,172.42c-1.4,4.38-4.72,7.87-9.02,9.48L23.298,509.91 c-2.198,0.703-4.441,2.09-8.31,2.09c-3.91,0-7.74-1.53-10.61-4.39c-8.159-8.178-2.4-18.123-2.3-18.92l137.82-368.24 c1.61-4.3,5.1-7.62,9.48-9.02l172.42-55.24c5.36-1.71,11.21-0.29,15.19,3.68l115.13,115.13 C456.088,178.979,457.508,184.839,455.798,190.189z"/><g><path style="fill:#FCB12B;" d="M394.553,117.435L4.378,507.609c2.87,2.86,6.7,4.39,10.61,4.39c3.869,0,6.112-1.388,8.31-2.09 l368.24-137.82c4.3-1.61,7.62-5.1,9.02-9.48l55.24-172.42c1.71-5.35,0.29-11.21-3.68-15.19L394.553,117.435z"/><path style="fill:#FCB12B;" d="M290.645,221.343c-25.271-25.271-66.388-25.27-91.658,0c-21.819,21.82-24.697,55.024-9.368,79.816 L2.078,488.69c-0.097,0.773-5.857,10.743,2.3,18.92c2.87,2.86,6.7,4.39,10.61,4.39c3.841,0,6.088-1.38,8.31-2.09l187.546-187.555 c25.159,15.488,58.31,12.139,79.801-9.353l0,0C315.975,287.672,315.977,246.674,290.645,221.343z"/></g><path style="fill:#FDA429;" d="M290.645,221.343C274.582,237.406,20.472,491.516,4.378,507.609c2.87,2.86,6.7,4.39,10.61,4.39 c3.842,0,6.088-1.38,8.31-2.09l187.546-187.555c25.159,15.488,58.31,12.139,79.801-9.353l0,0 C315.975,287.672,315.977,246.674,290.645,221.343z"/></svg>'
         if(data[i].TrangThai === 1){ trangthai = trangthai + '<svg class="tick-xanh-tablex" height="20px"  viewBox="0 0 367.805 367.805" width="20px"><path style="fill:#3BB54A;" d="M183.903,0.001c101.566,0,183.902,82.336,183.902,183.902s-82.336,183.902-183.902,183.902 S0.001,285.469,0.001,183.903l0,0C-0.288,82.625,81.579,0.29,182.856,0.001C183.205,0,183.554,0,183.903,0.001z"/><polygon style="fill:#D4E1F4;" points="285.78,133.225 155.168,263.837 82.025,191.217 111.805,161.96 155.168,204.801  256.001,103.968"/></svg>';}
         else {trangthai = trangthai + '<svg class="tick-xanh-tablex" height="20px"  viewBox="0 0 367.805 367.805" width="20px"><path style="fill:transparent;" d="M183.903,0.001c101.566,0,183.902,82.336,183.902,183.902s-82.336,183.902-183.902,183.902 S0.001,285.469,0.001,183.903l0,0C-0.288,82.625,81.579,0.29,182.856,0.001C183.205,0,183.554,0,183.903,0.001z"/><polygon style="fill:#D4E1F4;" points="285.78,133.225 155.168,263.837 82.025,191.217 111.805,161.96 155.168,204.801  256.001,103.968"/></svg>';}
-        listtailieu.push({tep:data[i].Tep_Goc,giangvien: data[i].MaGV + '-' + data[i].TenNV,Mota:data[i].MoTa,thoigian: data[i].ThoiGian, trangthai:trangthai });
+        listtailieu.push({tep:data[i].Tep_Goc,giangvien: data[i].MaGV + '-' + data[i].TenNV,Mota:data[i].MoTa,thoigian: getDateFormat(data[i].ThoiGian), trangthai:trangthai });
     }
 
     $('#button-bar').show();
@@ -794,10 +794,10 @@ function LoadPhancongTailieu(doan,listsinhvien){
                 '<div>Tên: '+doan.TenDA+'</div>'+
                 '<div>Chuyên ngành: '+doan.tenCN+'</div>'+
                 '<div>Người tạo: '+doan.MaNguoiTaoDA+' - '+doan.TenNguoiTaoDA+'</div>'+
-                '<div>Ngày tạo: '+doan.NgayTao.replace('T17:00:00.000Z','')+'</div>'+
+                '<div>Ngày tạo: '+getDateFormat(doan.NgayTao)+'</div>'+
                 '<div style="color: rgb(107, 144, 185);">Tài liệu hướng dẫn:</div>'+
                 '<span>Người cập nhật: '+doan.MaNguoiCapNhat+' - '+doan.TenNguoiCapNhat+'</span>'+
-                '<span>Ngày cập nhật: '+doan.NgayCapNhat.replace('T17:00:00.000Z','')+'</span>'+
+                '<span>Ngày cập nhật: '+getDateFormat(doan.NgayCapNhat)+'</span>'+
                 '<span>Tệp: <a href="/qldean/uploads/'+doan.Tep+'">'+doan.Tep_Goc+'</a> </span>'+
                 '<span>Mô tả: '+doan.MoTa+'</span><span></span><span></span>'+
             '</span>'+
@@ -855,7 +855,7 @@ function LoadInfoSvPhancongtailieu(infosv){
         '<div>Thông tin sinh viên:</div>'+
         '<div>Mã: '+infosv.MaSV+'</div>'+
         '<div>Tên: '+infosv.TenSV+'</div>'+
-        '<div>Ngày sinh: '+infosv.NgaySinh.replace('T17:00:00.000Z','')+'</div>'+
+        '<div>Ngày sinh: '+getDateFormat(infosv.NgaySinh)+'</div>'+
         '<div>SDT: '+infosv.SDT+'</div>'+
         '<div>Email: '+infosv.Email+'</div>'+
         '<div>Lớp: '+infosv.MaLop+'</div>'+
@@ -884,7 +884,7 @@ async function EventTeacherClick(event) {
             document.querySelector('#yes-color-btn-follow-row div:nth-child(2)').style.background = "rgb(202, 107, 72)";
         }
         }else{
-            document.querySelector('.yes-color-lum-table td:nth-child(4)').style.background = "#dbdbdb";
+            document.querySelector('.yes-color-lum-table td:nth-child(5)').style.background = "#dbdbdb";
         }
     }
 

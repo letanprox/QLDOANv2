@@ -143,8 +143,8 @@ function addGiangvien() {
     var email = document.getElementsByClassName('input-new-row-long').item(2).value;
 
     var thoigiansv = document.getElementsByClassName('thoigianform').item(0).value;
-    thoigiansv = String(thoigiansv).split('T');
-    var ngaysinh = thoigiansv[0];
+    thoigiansv = getDateFormatx(thoigiansv);
+    var ngaysinh = thoigiansv;
 
     console.log(MaGV,TenGV,SDT,email,ngaysinh,String(nghanhcurrent) )
 
@@ -160,8 +160,8 @@ function updateListGiangvien() {
     var email = document.getElementsByClassName('input-new-row-long').item(2).value;
 
     var thoigiansv = document.getElementsByClassName('thoigianform').item(0).value;
-    thoigiansv = String(thoigiansv).split('T')
-    var ngaysinh = thoigiansv[0];
+    thoigiansv = getDateFormatx(thoigiansv);
+    var ngaysinh = thoigiansv;
 
     console.log(MaGV,TenGV,email,ngaysinh,SDT)
 
@@ -301,7 +301,7 @@ function LoadSuaGiangvien(data) {
     // $('.Add-New-Row').append(returnFormInputSelect('Nghành', 'xxxx' , listmanganh, listtennghanh, nghanhcurrent));
 
     $('.Add-New-Row').append(returnFormInputTextLength('Tên',data.TenNV ));
-    $('.Add-New-Row').append(returnFormInputTime('Ngày sinh',2,data.NgaySinh.replace('T17:00:00.000Z','')));
+    $('.Add-New-Row').append(returnFormInputTime('Ngày sinh',2,getDateFormatx(data.NgaySinh)));
     $('.Add-New-Row').append(returnFormInputTextLength('Tên',data.SDT ));
     $('.Add-New-Row').append(returnFormInputTextLength('Email', data.Email));
 

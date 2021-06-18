@@ -222,7 +222,7 @@ function LoadPhancongPhanbien(data) {
                 '<div>Thông tin sinh viên:</div>'+
                 '<div>Mã: '+InfoSV.MaSV+'</div>'+
                 '<div>Tên: '+InfoSV.TenSV+'</div>'+
-                '<div>Ngày sinh: '+InfoSV.NgaySinh.replace('T17:00:00.000Z','')+'</div>'+
+                '<div>Ngày sinh: '+getDateFormat(InfoSV.NgaySinh)+'</div>'+
                 '<div>SDT: '+InfoSV.SDT+'</div>'+
                 '<div>Email: '+InfoSV.Email+'</div>'+
                 '<div>Lớp: '+InfoSV.MaLop+'</div>'+
@@ -301,7 +301,7 @@ function LoadInfoGV(data){
         '<div>Tên: '+data.TenNV+'</div>'+
         '<div>SDT: '+data.SDT+'</div>'+
         '<div>Email: '+data.Email+'</div>'+
-        '<div>Ngày sinh: '+data.NgaySinh.replace('T17:00:00.000Z','')+'</div>'+
+        '<div>Ngày sinh: '+getDateFormat(data.NgaySinh)+'</div>'+
         '<div></div>'
     )
 }
