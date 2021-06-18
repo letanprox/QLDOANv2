@@ -357,6 +357,9 @@ function EventAdminClick(event) {
         }else if(x.id == "chitietx"){
             LoadChitietPhanbien();
         }
+    }else if(x.parentNode.className == "nav-page" ){
+        page_num = Number(x.innerHTML)
+        loadListPhanbien();
     }else if(x.className == "add_new_btn" || x.parentNode.className == "add_new_btn" || x.parentNode.parentNode.className == "add_new_btn" ||  x.parentNode.parentNode.parentNode.className == "add_new_btn"){
         LoadAddFormPhanbien();
     }else if(x.className == "return_btn" || x.parentNode.className == "return_btn" || x.parentNode.parentNode.className == "return_btn" ||  x.parentNode.parentNode.parentNode.className == "return_btn"){

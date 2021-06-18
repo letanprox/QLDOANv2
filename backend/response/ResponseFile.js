@@ -6,7 +6,7 @@ var listCheckJoinHTML = [
   ["addheadQLdean", "qldean/Home.html" , "qldean/Login.html" , "qldean/Panel.html" , "qldean/Panel1.html" ,
     "qldean/Admin/AdminxQuanlytieuban.html" ,"qldean/Admin/AdminxQuanlysinhvien.html", "qldean/Admin/AdminxQuanlygiangvien.html", 
     "qldean/Admin/AdminxPhancongphutrach.html" , 'qldean/Admin/AdminxPhancongphanbien.html' , 'qldean/Admin/AdminxPhanconghuongdan.html' , 'qldean/Admin/AdminxPhancongtieuban.html' , "qldean/Admin/AdminxTaikhoan.html",
-    "qldean/Teacher/TeacherxPhancong.html" , "qldean/Teacher/TeacherxTaikhoan.html", "qldean/Teacher/TeacherxHuongdan.html" , "qldean/Teacher/TeacherxDanhsachdoan.html","qldean/Teacher/TeacherxPhanbien.html","qldean/Teacher/TeacherxTieuban.html", "qldean/Teacher/TeacherxDanhsachsinhvien.html","qldean/Student/StudentxDoan.html","qldean/Admin/AdminxThongke.html"],
+    "qldean/Teacher/TeacherxPhancong.html" , "qldean/Teacher/TeacherxTaikhoan.html", "qldean/Teacher/TeacherxHuongdan.html" , "qldean/Teacher/TeacherxDanhsachdoan.html","qldean/Teacher/TeacherxPhanbien.html","qldean/Teacher/TeacherxTieuban.html", "qldean/Teacher/TeacherxDanhsachsinhvien.html","qldean/Student/StudentxDoan.html","qldean/Admin/AdminxThongke.html","qldean/Student/StudentxTaikhoan.html"],
 ];
 
 var preventFolder = [

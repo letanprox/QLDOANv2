@@ -4,4 +4,5 @@ $("body").click(function(e) {
     if(url_string.includes('/admin')) EventAdminClick(e);
     if(url_string.includes('/giangvien')) EventTeacherClick(e);
     if(url_string.includes('/thongtindoan')) EventTeacherClick(e);
+    if(url_string.includes('/taikhoansinhvien')) EventTeacherClick(e);
 });

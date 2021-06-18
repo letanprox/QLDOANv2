@@ -1,8 +1,10 @@
-$( "#act-taikhoan" ).addClass( "active" );
+$( "#act-taikhoang" ).addClass( "active" )
 
 $("#name-user").empty();
-$("#name-user").append('Admin: ' + getCookie('QLNAME'));
-var MaAdmin = getCookie('QL');
+$("#name-user").append('SV: ' + getCookie('SVNAME'));
+var MaSV = getCookie('SV');
+console.log(MaSV + ':MÃ')
+
 
 var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -18,6 +20,7 @@ function loadListTieuban(){
     xhttp.open("GET", "/api/danhsachtieuban?page="+page_num+"&khoa="+khoacurrent, false);
     xhttp.send();
 }
+
 
 //ELEMENT-----------------------------------------------------
 function loadinterface(){
@@ -55,7 +58,7 @@ function LoadDoimatkhau(){
 }
 
 //CLICK-----------------------------------------------
-function EventAdminClick(event) {
+function EventTeacherClick(event) {
     var x = event.target;
     if( x.parentNode.className == "no-color-lum-table"){
 
@@ -80,5 +83,6 @@ function EventAdminClick(event) {
 
     }
 }
+
 //FIRST------------------------------------------
 loadinterface()

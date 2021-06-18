@@ -199,7 +199,7 @@ function LoadChamdiemtieuban(infosv,infodoan,infodiem,infobaocaofile){
             '<div>Tên: '+infodoan.TenDA+'</div>'+
             '<div>Chuyên ngành: '+infodoan.tenCN+'</div>'+
             '<div>Người tạo: '+infodoan.MaNguoiTaoDA+' - '+infodoan.TenNguoiTaoDA+'</div>'+
-            '<div>Tài liệu hướng dẫn:   <a href="http://">'+infodoan.Tep_Goc+'</a> </div>'+
+            '<div>Tài liệu hướng dẫn:   <a href="/qldean/uploads/'+infodoan.Tep+'">'+infodoan.Tep_Goc+'</a> </div>'+
             '<div>Mô tả: '+infodoan.MoTa+'</div>'+
         '</span>'
     )
@@ -208,7 +208,7 @@ function LoadChamdiemtieuban(infosv,infodoan,infodiem,infobaocaofile){
     var baocaofile;
     var mota;
     if(String(infobaocaofile.Tep_Goc) === 'null') baocaofile = 'Chưa có';
-    else baocaofile = '<a href="http://">' +  infobaocaofile.Tep_Goc + '</a>';
+    else baocaofile = '<a href="/qldean/uploads/'+infobaocaofile.Tep+'">' +  infobaocaofile.Tep_Goc + '</a>';
     if(String(infobaocaofile.MoTa) === 'null') mota = 'Chưa có';
     else mota = infobaocaofile.MoTa;
 

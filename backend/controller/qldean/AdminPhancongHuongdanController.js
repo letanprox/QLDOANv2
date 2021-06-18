@@ -142,6 +142,8 @@ module.exports = async (callback, scanner) => {
           let niemkhoahientai = await Model.InleSQL("select nienkhoahientai('"+MaNghanh+"') AS nienkhoahientai");
           let TTmokhoamoi = await Model.InleSQL("SELECT TrangThai_MoKhoaMoi('"+MaNghanh+"') AS TTmokhoamoi");
 
+          console.log("select CountList_SvDAHD('"+Khoa+"','"+MaNghanh+"','"+textsearch+"')")
+
           let data = [];
           data.push(listNganh);
           data.push(listKhoa);

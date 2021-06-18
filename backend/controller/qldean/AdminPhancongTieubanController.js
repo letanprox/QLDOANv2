@@ -18,7 +18,7 @@ module.exports = async (callback, scanner) => {
 
     if (index === 'danhsachphancongTB'){
 
-
+        let textsearch = String(head_params.get('textsearch'));
 
         let MaAdmin = String(head_params.get('MaAdmin')).trim();
         let MaNghanh = String(head_params.get('MaNghanh')).trim();
@@ -77,8 +77,8 @@ module.exports = async (callback, scanner) => {
                 listKhoa = listKhoa[0];
             }
   
-            let count = await Model.InleSQL("select CountList_SvDATB('"+Khoa+"','"+MaNghanh+"') AS NumberSV");
-            let select = await Model.InleSQL("call ShowList_SvDATB('"+Khoa+"','"+MaNghanh+"',"+page*limit+")");
+            let count = await Model.InleSQL("select CountList_SvDATB('"+Khoa+"','"+MaNghanh+"','"+textsearch+"') AS NumberSV");
+            let select = await Model.InleSQL("call ShowList_SvDATB('"+Khoa+"','"+MaNghanh+"','"+textsearch+"',"+page*limit+")");
             let niemkhoahientai = await Model.InleSQL("select nienkhoahientai('"+MaNghanh+"') AS nienkhoahientai");
             console.log("call ShowList_SvDATB('"+Khoa+"','"+MaNghanh+"',"+page*limit+")")
 
@@ -118,8 +118,8 @@ module.exports = async (callback, scanner) => {
             listKhoa = await Model.InleSQL("call ComboBox_Khoa('"+MaNghanh+"')");
             listKhoa = listKhoa[0];
   
-            let count = await Model.InleSQL("select CountList_SvDATB('"+Khoa+"','"+MaNghanh+"') AS NumberSV");
-            let select = await Model.InleSQL("call ShowList_SvDATB('"+Khoa+"','"+MaNghanh+"',"+page*limit+")");
+            let count = await Model.InleSQL("select CountList_SvDATB('"+Khoa+"','"+MaNghanh+"','"+textsearch+"') AS NumberSV");
+            let select = await Model.InleSQL("call ShowList_SvDATB('"+Khoa+"','"+MaNghanh+"','"+textsearch+"',"+page*limit+")");
             let niemkhoahientai = await Model.InleSQL("select nienkhoahientai('"+MaNghanh+"') AS nienkhoahientai");
 
             console.log("call ShowList_SvDATB('"+Khoa+"','"+MaNghanh+"',"+page*limit+")")

@@ -387,7 +387,9 @@ module.exports = async (callback, scanner) => {
         let result = await Model.InleSQL("call ShowInfor_SVHD('"+MaSV+"')");
         let result1 = await Model.InleSQL("call ShowInfor_DA('"+MaGV+"','"+MaDoan+"',"+MaCT+");"); 
         let result2 = await Model.InleSQL("call ShowFullDiem('"+MaSV+"');"); 
-        let result3 = await Model.InleSQL("call ShowFile_BaoCao('"+MaPC+"');"); 
+        let result3 = await Model.InleSQL("call ShowFile_BaoCao('"+MaPC+"');");
+        
+        console.log("call ShowFullDiem('"+MaSV+"');")
 
         let data = [];
         data.push(result);

@@ -134,7 +134,7 @@ function LoadListTieuban(infodoan,infodiem,infotep,infogvtb) {
             '<div>Thông tin đồ án:</div>'+
             '<div>Mã: '+infodoan.MaDA+'</div>'+
             '<div>Tên: '+infodoan.TenDA+'</div>'+
-            '<div>Tài liệu hướng dẫn: <a href="">'+infodoan.Tep_Goc+'</a> </div>'+
+            '<div>Tài liệu hướng dẫn: <a href="/qldean/uploads/'+infodoan.Tep+'">'+infodoan.Tep_Goc+'</a> </div>'+
             elementGVorTB+
             
         '</span>'
@@ -365,6 +365,8 @@ async function EventTeacherClick(event) {
             console.log('upfile')
 
             var namefilex = MaSV+MaDA+getCurrentTime().replace(/\D/g,'')+contentfile['name'];
+
+            await new Promise(resolve => setTimeout(resolve, 500));
 
             var formData = new FormData();
             formData.append("file", contentfile);        

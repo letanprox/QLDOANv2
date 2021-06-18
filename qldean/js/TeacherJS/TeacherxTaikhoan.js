@@ -5,19 +5,6 @@ $("#name-user").append('GV: ' + getCookie('GVNAME'));
 var MaGV = getCookie('GV');
 console.log(MaGV + ':MÃ')
 
-var listButtonpk = ['Phân công','Sửa','Xóa'];
-var listIdBtnTable = ['phancongx', 'suax' , 'xoax'];
-
-var listBtnpk =  ['Thêm','Thoát'];
-var listColorpk = ['tomato', 'green'];
-var listIdBtn = ['them', 'thoa'];
-
-var listSuaBtnpk =  ['Sửa','Thoát'];
-var listSuaColorpk = ['tomato', 'green'];
-var listSuaIdBtn = ['sua', 'thoa'];
-
-var listphancongbtn =  ['Phân công','Thoát'];
-
 
 var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -36,72 +23,42 @@ function loadListTieuban(){
 
 
 //ELEMENT-----------------------------------------------------
-function LoadListTieuban(data) {
-
-    //xác định ẩn hiện
-    $('#button-bar').show();
-    $('.chose-bar').show();
-    $('#table_data').show();
-    $('.btn-follow-row').show();
-    $('.nav-page').show();
-    $('#head-bar').show();
-
-    $('.Add-New-Row').hide();
-
-    //làm rỗng các phần
-    $('#head-bar').empty();
-    $('#button-bar').empty();
-    $('.chose-bar').empty();
-    $('#table_data').empty();
-    $('.btn-follow-row').empty();
-    $('.nav-page').empty();
-
-    //thêm chi tiết vào
-    $('#head-bar').append(returnFormListKhoa(listkhoa,khoacurrent));
-    $('#button-bar').append(returnIconHome() + returnNameIndex('Quản lý tiểu ban') +  returnAddBtn());
-    $('.chose-bar').append(returnSearchForm('Nhập mã tiểu ban','Tìm kiếm') );
-    $('#table_data').append(returnTable( ['Tiểu ban','Ngày','Giờ','Trạng thái'],listTB));
-    $('.btn-follow-row').append(returnButtonTable(listButtonpk,listIdBtnTable));
-    $('.nav-page').append(returNavForm(tol_page+1, page_num));
-}
-
-
 function loadinterface(){
     $('#button-bar').empty();
     $('#button-bar').append(returnIconHome() + returnNameIndex('Tài khoản') + returnSwitchBtn('Thông tin', 'Mật khẩu'));
-
     LoadInfo();
 }
 
 function LoadInfo(){
-
-    $('.Add-New-Row').show();
-    $('.Add-New-Row').empty();
-
-    //làm rỗng các phần
-    $('.Add-New-Row').append(returnLormOneInfo('Mã tài khoản: ADM209'));
-    $('.Add-New-Row').append(returnLormOneInfo('Tên Chủ Tài khoản : Minh Chiến'));
-    $('.Add-New-Row').append(returnLormOneInfo('Ngày Sinh : 29/3/2009'));
-    $('.Add-New-Row').append(returnLormOneInfo(''));
-    $('.Add-New-Row').append(returnLormOneInfo(''));
-
-
+    $('#doimatkhau-taikhoan').hide();
+    $('#info-taikhoan').show();
+    $('#info-taikhoan').empty();
+    $('#info-taikhoan').append(
+        '<div><span>Tên: </span><span>Nguyễn Ngọc Hân</span></div>'+
+        '<div><span>Email: </span> <span>Nguyenngocurx@gmail.com</span></div>'+
+        '<div><span>SDT: </span><span>02554484542</span></div>'+
+        '<div><span>Ngày sinh: </span> <span>21/12/2021</span></div>'
+    )
 }
 
 
 function LoadDoimatkhau(){
-    $('.Add-New-Row').show();
-    $('.Add-New-Row').empty();
-    //làm rỗng các phần
-    $('.Add-New-Row').append(returnFormInputTextLength('Mật khẩu cũ','' ));
-    $('.Add-New-Row').append(returnFormInputTextLength('Mật khẩu mới','' ));
-    $('.Add-New-Row').append(returnFormInputTextLength('Nhập lại mật khẩu','' ));
-
-    $('.Add-New-Row').append(returnFormBtn(['Đổi mật khẩu','Làm mới'],['tomato','green'],['doimatkhaubtn', 'lammoibtn']));
+    $('#info-taikhoan').hide();
+    $('#doimatkhau-taikhoan').show();
+    $('#doimatkhau-taikhoan').empty();
+    $('#doimatkhau-taikhoan').append(
+        '<div><input class="form-control" placeholder="mật khẩu cũ" type="password"></div>'+
+        '<div><input  class="form-control" placeholder="mật khẩu mới" type="password"></div>'+
+        '<div><input  class="form-control" placeholder="xác nhận" type="password"></div>'+
+        '<div>'+
+            '<button>Xác nhận</button>'  +
+            '<button>Làm mới</button>'+
+        '</div>'
+    )
 }
 
 //CLICK-----------------------------------------------
-function EventAdminClick(event) {
+function EventTeacherClick(event) {
     var x = event.target;
     if( x.parentNode.className == "no-color-lum-table"){
 

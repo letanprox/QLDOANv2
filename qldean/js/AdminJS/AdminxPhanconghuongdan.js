@@ -322,7 +322,10 @@ function EventAdminClick(event) {
      
 
    
-    }else if(x.parentNode.className == 'btn-follow-row'){
+    }else if(x.parentNode.className == "nav-page" ){
+        page_num = Number(x.innerHTML)
+        loadListHuongdan();
+    } else if(x.parentNode.className == 'btn-follow-row'){
         if(x.id == "phancongx" ){
             if(khoacurrent == nienkhoahientai){
             MaGVtemp = listinfoitem[currentrowtable].MaGVHD;

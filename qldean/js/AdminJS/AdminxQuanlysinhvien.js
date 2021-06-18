@@ -402,7 +402,7 @@ function LoadListSinhvien(data) {
     if(document.getElementById('input-search')){
     }else{
         $('.chose-bar').empty();
-        $('.chose-bar').append(returnSearchForm('Tìm mã sinh viên','Làm mới') );    
+        $('.chose-bar').append(returnSearchForm('Nhập sinh viên','Làm mới') );    
     }
 
     $('#table_data').append(returnTable(tieudeBangSinhvien,data));

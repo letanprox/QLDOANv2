@@ -228,7 +228,7 @@ function LoadListGiangvien(data) {
     if(document.getElementById('input-search')){
     }else{
         $('.chose-bar').empty();
-        $('.chose-bar').append(returnSearchForm('Nhập mã giảng viên','Làm mới') );    }
+        $('.chose-bar').append(returnSearchForm('Nhập giảng viên','Làm mới') );    }
 
     $('#table_data').append(returnTable(tieudeBangGiangvien,data));
     $('.btn-follow-row').append(returnButtonTable(tennutBangGiangvien,idnutBangGiangvien));
@@ -343,7 +343,7 @@ function EventAdminClick(event) {
           }
     }else if(x.parentNode.className == "nav-page" ){
         page_num = Number(x.innerHTML)
-        loadListDataGiangvien();
+        loadListGiangvien();
     } 
     else{
         $('.yes-color-lum-table').removeClass('yes-color-lum-table').addClass('no-color-lum-table');
@@ -356,41 +356,7 @@ function EventAdminClick(event) {
     }if(x.id == 'sua'){
         updateListGiangvien() 
     }
-    // var x = event.target;
-    // if(x.className == "return_btn" || x.parentNode.className == "return_btn" || x.parentNode.parentNode.className == "return_btn"  ||  x.parentNode.parentNode.parentNode.className == "return_btn" || x.className == "exit-btn"){
-    //     loadListGiangvien();
-    // }
-      
 
-    // if(x.className == "add_new_btn" || x.parentNode.className == "add_new_btn" || x.parentNode.parentNode.className == "add_new_btn" ||  x.parentNode.parentNode.parentNode.className == "add_new_btn"){
-    //     loadAddListGiangvien();
-    // }
-    // if(x.className == "add_row_gv_btn"){
-    //     addGiangvien();
-    // }
-
-    // if(x.className == "edit-co-btn" ){
-    //     $.getJSON("/api/dieukienthemgv", function (data) {
-    //         LoadUpdateListGiangvien(data[0] , data[1] , listinfoitem[Number(String(x.id).replace('row-', ''))] )
-    //     });
-    // }
-    // if(x.className == "update_row_gv_btn"){
-    //     updateListGiangvien();
-    // }
-
-    // if(x.className == "delete-co-btn"){
-    //     xhttp.open("GET", "/api/xoagv?magv="+listinfoitem[Number(String(x.id).replace('row_', ''))].maGV, false);
-    //     xhttp.send();
-    // }
-
-    // if(x.id == "search-index"){
-    //     xhttp.open("GET", "/api/timmagv?magv="+document.getElementById("input-search").value , false);
-    //     xhttp.send();
-    // }
-    // if(x.id == "refresh-index"){
-    //     page_num = 1;
-    //     loadListGiangvien();
-    // }
 }
 
 //FIRST---------------------------------------------------------

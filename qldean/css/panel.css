@@ -113,7 +113,7 @@
 
 
 #activeswitchbar{
-    background-color: tomato;
+    background-color: slateblue;
 }
 
 .left-bar div{
@@ -659,12 +659,12 @@ table, th, td {
     padding: 6px  10px 4px 10px;
     border-radius: 2px;
     margin-right: 5px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(27, 27, 27, 0.205);
     cursor: pointer;
 }
 
 #chose-nav-item{
-    background-color: rgb(168, 168, 168);
+    background-color: white;
 }
 
 .Add-New-Row{
@@ -1693,6 +1693,7 @@ iframe {
     border: none;
     outline: none;
     color: white;
+    cursor: pointer;
     border-radius: 3px;
 }
 
@@ -1767,4 +1768,48 @@ iframe {
     background-color: white;
     border-radius: 3px;
     margin-top: -10px;
+}
+
+
+#info-taikhoan{
+    padding: 10px;
+    border-radius: 3px;
+    margin-top: 10px;
+    float: left;
+    position: relative;
+    background-color: white;
+}
+
+#info-taikhoan div span:first-child{
+    color: rgb(8, 122, 113);
+}
+
+
+#doimatkhau-taikhoan{
+    padding: 10px;
+    border-radius: 3px;
+    margin-top: 10px;
+    float: left;
+    position: relative;
+    background-color: white;
+}
+
+#doimatkhau-taikhoan div{
+    margin-top: 10px;
+    width: auto;
+    position: relative;
+}
+
+
+#doimatkhau-taikhoan div button{
+    padding: 5px 10px;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    background-color: cornflowerblue;
+    cursor: pointer;
+    margin-left: 10px;
+}
+#doimatkhau-taikhoan div button:first-child{
+    background-color: coral;
 }

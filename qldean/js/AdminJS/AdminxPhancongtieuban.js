@@ -9,7 +9,7 @@ $("#name-user").empty();
 $("#name-user").append('Admin: ' + getCookie('QLNAME'));
 var MaAdmin = getCookie('QL');
 
-var tieudeBangTB = ['Mã sinh viên','Tên sinh viên','Email','Điểm PB','Mã GVPB','Điểm'];
+var tieudeBangTB = ['Mã sinh viên','Tên sinh viên','Email','Điểm PB','Mã TB','Điểm TB', 'Số lượng điểm'];
 var tennutBangTB = ['Phân công'];
 var idnutBangTB = ['phancongx'];
 
@@ -32,6 +32,8 @@ var listkhoa = [];
 var listnghanh = [];
     var listmanganh = [];
     var listtennghanh = [];
+
+var textsearch = '';
 
 var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -82,7 +84,7 @@ var xhttp = new XMLHttpRequest();
 
 
 function loadListTieuban(){
-    xhttp.open("GET", "/api/danhsachphancongTB?page="+page_num+"&Khoa="+khoacurrent+"&MaAdmin="+MaAdmin+"&MaNghanh="+String(nghanhcurrent), false);
+    xhttp.open("GET", "/api/danhsachphancongTB?page="+page_num+"&Khoa="+khoacurrent+"&MaAdmin="+MaAdmin+"&MaNghanh="+String(nghanhcurrent)+"&textsearch="+textsearch, false);
     xhttp.send();
 }
 
@@ -358,6 +360,9 @@ function EventAdminClick(event) {
         }else if(x.id == "chitietx"){
             LoadChitietTieuban();
         }
+    }else if(x.parentNode.className == "nav-page" ){
+        page_num = Number(x.innerHTML)
+        loadListTieuban();
     }else if(x.className == "add_new_btn" || x.parentNode.className == "add_new_btn" || x.parentNode.parentNode.className == "add_new_btn" ||  x.parentNode.parentNode.parentNode.className == "add_new_btn"){
         LoadAddFormTieuban();
     }else if(x.className == "return_btn" || x.parentNode.className == "return_btn" || x.parentNode.parentNode.className == "return_btn" ||  x.parentNode.parentNode.parentNode.className == "return_btn"){

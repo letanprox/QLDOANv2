@@ -283,7 +283,7 @@ function LoadListTieuban(data) {
     if(document.getElementById('input-search')){
     }else{
         $('.chose-bar').empty();
-        $('.chose-bar').append(returnSearchForm('Tìm mã tiểu ban','Làm mới') + '<div style="margin-top:10px ;margin-right:5px;float: right;">Hội đồng thi Khoa Công Nghệ Thông Tin</div>' );
+        $('.chose-bar').append(returnSearchForm('Nhập tiểu ban','Làm mới') + '<div style="margin-top:10px ;margin-right:5px;float: right;">Hội đồng thi Khoa Công Nghệ Thông Tin</div>' );
     }
     
     $('#table_data').append(returnTable( tieudeBangTieuban ,listTB));
@@ -492,15 +492,8 @@ function EventAdminClick(event) {
     }else if(x.id == 'phancong'){
         addphancongtieuban();
     }else if(x.parentNode.className == "nav-page" ){
+        page_num = Number(x.innerHTML);
         loadListTieuban();
-        // if(currentlist == 1){
-        //     console.log("loaddataa")
-        //     page_num = Number(x.innerHTML);
-        //     loadListDataTieuban();
-        // }else{
-        //     page_num = Number(x.innerHTML);
-        //     loadListSearchTieuban();
-        // }
     }else if(x.id == "logout" ||  x.parentNode.id == "logout" || x.parentNode.parentNode.id == "logout"){
         if (confirm('Bạn có muốn đăng xuất')) {
             window.location.replace("/login");

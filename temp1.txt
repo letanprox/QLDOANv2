@@ -1,0 +1,21 @@
+call ShowInfor_User(id người dùng);
+
+-- sửa SV
+update sinhvien
+SET	TenSV='tên',
+	Ngayinh='ngày sinh',
+    SDT='sđt'
+where MaSV='Mã SInh viên';
+
+-- sửa GV vs QL
+update nhanvien
+SET	TenNV='tên',
+	Ngayinh='ngày sinh',
+    SDT='sđt',
+    Email='email'
+where MaNV='Mã nhân viên'
+
+-- đổi mật khẩu
+UPDATE taikhoan
+set MatKhau=md5('pass')
+where TenDangNhap='id người dùng' 
