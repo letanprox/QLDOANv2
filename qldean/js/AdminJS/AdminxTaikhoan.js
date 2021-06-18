@@ -22,12 +22,12 @@ function loadListTieuban(){
 //ELEMENT-----------------------------------------------------
 function loadinterface(){
     $('#button-bar').empty();
-    $('#button-bar').append(returnIconHome() + returnNameIndex('Tài khoản') + returnSwitchBtn('Thông tin', 'Mật khẩu'));
+    $('#button-bar').append(returnIconHome() + returnNameIndex('Tài khoản'));
     LoadInfo();
 }
 
 function LoadInfo(){
-    $('#doimatkhau-taikhoan').hide();
+    $('#doimatkhau-taikhoan').show();
     $('#info-taikhoan').show();
     $('#info-taikhoan').empty();
     $('#info-taikhoan').append(
@@ -36,6 +36,19 @@ function LoadInfo(){
         '<div><span>SDT: </span><span>02554484542</span></div>'+
         '<div><span>Ngày sinh: </span> <span>21/12/2021</span></div>'
     )
+
+    $('#doimatkhau-taikhoan').append(
+        '<div><input class="form-control" placeholder="mật khẩu cũ" type="password"></div>'+
+        '<div><input  class="form-control" placeholder="mật khẩu mới" type="password"></div>'+
+        '<div><input  class="form-control" placeholder="xác nhận" type="password"></div>'+
+        '<div>'+
+            '<button>Xác nhận</button>'  +
+            '<button>Làm mới</button>'+
+        '</div>'
+    )
+
+    document.getElementById('button-bar').style.width = document.getElementById('contain-account').offsetWidth+'px';
+
 }
 
 
@@ -54,11 +67,43 @@ function LoadDoimatkhau(){
     )
 }
 
+(function($){
+    $.fn.focusTextToEnd = function(){
+        this.focus();
+        var $thisVal = this.val();
+        this.val('').val($thisVal);
+        return this;
+    }
+}(jQuery));
+
+
+
+
+$( "#input-name" ).change(function() {
+    document.getElementById('cap-nhat-info-tai-khoang').style.opacity = '1';
+  });
+
+
+document.getElementById('input-name').style.display = "none";
 //CLICK-----------------------------------------------
 function EventAdminClick(event) {
     var x = event.target;
     if( x.parentNode.className == "no-color-lum-table"){
 
+    }else if(x.id == "pencil-name"){
+
+        x.style.display="none";
+        document.getElementById('input-name').style.display = "block";
+        document.getElementById('label-name').style.display = "none";
+
+        
+        $('#input-name').focus();
+        $('#input-name').focusTextToEnd();
+    
+    }else if(x.id == "input-name" || x.className == "label-title" ){
+
+
+    
     }else if(x.className == "loadswitch1"){
         LoadInfo();
         $('#activeswitchbar').removeAttr('id');
@@ -78,6 +123,11 @@ function EventAdminClick(event) {
           }
     }else{
 
+        document.getElementById('label-name').innerHTML  =  String(document.getElementById('input-name').value);
+        document.getElementById('pencil-name').style.display="block";
+        document.getElementById('input-name').style.display = "none";
+        document.getElementById('label-name').style.display = "block";
+      
     }
 }
 //FIRST------------------------------------------

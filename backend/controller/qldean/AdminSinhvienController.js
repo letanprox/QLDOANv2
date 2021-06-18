@@ -376,6 +376,7 @@ module.exports = async (callback, scanner) => {
       console.log(MaSV,TenSV,NgaySinh,Lop,GPA,SDT+"capnhatsv")
       let result1 = await Model.InleSQL("call update_SV('"+Lop+"','"+MaSV+"', '"+TenSV+"', '"+NgaySinh+"',"+GPA+", '"+SDT+"')");
        console.log("call update_SV('"+Lop+"','"+MaSV+"', '"+TenSV+"', '"+NgaySinh+"',"+GPA+", '"+SDT+"')")
+       console.log(result1)
       if(String(result1).includes('Duplicate entry') || String(result1).includes('fail')){
         callback(JSON.stringify({ success: false, message: "Lỗi hệ thống!"}), 'application/json');
     }else{

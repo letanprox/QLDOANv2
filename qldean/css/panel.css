@@ -1792,6 +1792,7 @@ iframe {
     float: left;
     position: relative;
     background-color: white;
+    margin-left: 10px;
 }
 
 #doimatkhau-taikhoan div{
@@ -1812,4 +1813,80 @@ iframe {
 }
 #doimatkhau-taikhoan div button:first-child{
     background-color: coral;
+}
+
+
+#contain-account{
+    position: relative;
+    float: left;
+    margin-top: 0px;
+    width: auto;
+    height: auto;
+}
+
+#info-account{
+    position: relative;
+    float: left;
+    background-color: white;
+    margin-top: 10px;
+    width: 550px;
+    height: auto;
+    padding: 20px 30px;
+    border-radius: 4px;
+}
+
+
+#info-account div{
+    position: relative;
+    float: left;
+    margin-top: 10px;
+    width: 100%;
+}
+
+
+#info-account div i{
+    opacity: 0.7;
+}
+
+#info-account div input{
+    float: left;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: black;
+    margin-top: 4px;
+    margin-left: 7px;
+    padding-left: 6px;
+}
+
+
+#info-account div label{
+    font-size: 20px;
+    float: left;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#info-account div label:nth-child(2){
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#info-account div i{
+ 
+    cursor: pointer;
+    margin-top: 6px;
+
+}
+
+#info-account div  input:focus {
+    border-color: rgba(0, 0, 0, 0.322);
+
+  }
+
+#cap-nhat-info-tai-khoang{
+    background-color: rgba(255, 110, 85, 0.822);
+    border: none;
+    padding: 4px 7px;
+    color: white;
+    font-size: 14px;
+    border-radius: 3px;
+    opacity: 0.3;
+    cursor: pointer;
 }
