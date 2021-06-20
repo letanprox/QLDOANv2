@@ -399,8 +399,8 @@ function LoadListSinhvien(data) {
     $('.nav-page').empty();
 
     $('#button-bar').append(returnIconHome() + returnNameIndex('Quản lý sinh viên')  +  returnAddBtn());
-    $('#head-bar').append(returnFormComboxHeadBar('Nghành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
-    $('#head-bar').append(returnFormComboxHeadBar('Niêm khóa',listkhoa , listniemkhoa, khoacurrent, 'changeKhoaandNghanh',120,20));
+    $('#head-bar').append(returnFormComboxHeadBar('Ngành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
+    $('#head-bar').append(returnFormComboxHeadBar('Niên khóa',listkhoa , listniemkhoa, khoacurrent, 'changeKhoaandNghanh',120,20));
     
 
     if(document.getElementById('input-search')){
@@ -446,7 +446,7 @@ function LoadAddFormSinhvien() {
     $('#button-bar').empty();
     $('.Add-New-Row').empty();
 
-    $('#head-bar').append(returnFormComboxHeadBar('Nghành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
+    $('#head-bar').append(returnFormComboxHeadBar('Ngành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
     $('#head-bar').append(returnFormAddComboxBar('chon-list-khoa-add' ,listkhoatemp , listniemkhoatemp, khoacurrenttemp, 'changeKhoaandNghanh',120,20,'Thêm khóa','them-khoa-input',['Thêm mới','Xác nhận','Danh sách'],['them-khoa-btn','xacnhan-khoa-btn','ds-khoa-btn'],['cornflowerblue','tomato','cornflowerblue']));
 
     $('#button-bar').append(returnIconHome() + returnNameIndex('Quản lý sinh viên') + returnNameIndex('Thêm mới') +  returnReturnBtn());
@@ -459,7 +459,7 @@ function LoadAddFormSinhvien() {
     $('.Add-New-Row').append(returnFormInputTextLength('SDT','' ));
 
     if(listmachuyennganh.length > 0){
-        $('.Add-New-Row').append(returnFormInputSelect('Chuyên nghành', 'changeChuyennghanh' , listmachuyennganh, listtenchuyennganh, chuyennghanhcurrent));
+        $('.Add-New-Row').append(returnFormInputSelect('Chuyên ngành', 'changeChuyennghanh' , listmachuyennganh, listtenchuyennganh, chuyennghanhcurrent));
     }
 
     if(listlop.length > 0){
@@ -501,8 +501,8 @@ function LoadSuaFormSinhvien(listData,checkChuyennganh) {
     $('.Add-New-Row').append(returnFormLabel('Sửa sinh viên'));
     $('.Add-New-Row').append(returnFormLabelInfo('Mã sinh viên',listData.MaSV));
 
-    $('.Add-New-Row').append(returnFormLabelInfo('Niêm khóa',listniemkhoa[listkhoa.indexOf(Number(khoacurrent))]));
-    $('.Add-New-Row').append(returnFormLabelInfo('Nghành',listtennghanh[listmanganh.indexOf(nghanhcurrent)]));
+    $('.Add-New-Row').append(returnFormLabelInfo('Niên khóa',listniemkhoa[listkhoa.indexOf(Number(khoacurrent))]));
+    $('.Add-New-Row').append(returnFormLabelInfo('Ngành',listtennghanh[listmanganh.indexOf(nghanhcurrent)]));
     $('.Add-New-Row').append(returnFormInputTextLength('Tên',listData.TenSV ));
 
     $('.Add-New-Row').append(returnFormInputTime('Ngày sinh',2,getDateFormatx(listData.NgaySinh)));
@@ -511,7 +511,7 @@ function LoadSuaFormSinhvien(listData,checkChuyennganh) {
 
     if(checkChuyennganh == 0){
         if(listmachuyennganh.length > 0){
-            $('.Add-New-Row').append(returnFormInputSelect('Chuyên nghành', 'changeChuyennghanh' , listmachuyennganh, listtenchuyennganh, listData.MaCN));
+            $('.Add-New-Row').append(returnFormInputSelect('Chuyên ngành', 'changeChuyennghanh' , listmachuyennganh, listtenchuyennganh, listData.MaCN));
         }
     }
     if(listlop.length > 0){
@@ -621,9 +621,14 @@ function EventAdminClick(event) {
             loadSuaListSinhvien();
         }
         if(x.id == 'xoax'){
+
+            if (confirm('Bạn có muốn xóa sinh viên này không?')) {
+
             console.log(listinfoitem[currentrowtable].MaSV)
             xhttp.open("GET", "/api/xoasv?MaSV="+listinfoitem[currentrowtable].MaSV, false);
             xhttp.send();
+
+            }
         }
 
     }else if(x.id == 'them'){

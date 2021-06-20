@@ -47,13 +47,7 @@ var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
                 if(String(this.responseURL).includes('api/danhsachgiangvien')){
-                    // tol_page =  Math.ceil(data[1][0]['count( maGV)'] / 10); 
-
-                    // console.log(data)
-                    // console.log(tol_page)
-                    // listinfoitem = data[0];
-                    // LoadListGiangvien(data[0]);
-
+ 
                     var data = JSON.parse(this.responseText);
                     console.log(data)
                     listnghanh = data[0];
@@ -221,8 +215,8 @@ function LoadListGiangvien(data) {
     $('.nav-page').empty();
 
     $('#button-bar').append(returnIconHome() + returnNameIndex('Quản lý giảng viên') +  returnAddBtn());
-    $('#head-bar').append(returnFormComboxHeadBar('Nghành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
-    // $('#head-bar').append(returnFormComboxHeadBar('Niêm khóa',listkhoa , listniemkhoa, khoacurrent, 'changeKhoaandNghanh',120,20));
+    $('#head-bar').append(returnFormComboxHeadBar('Ngành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
+    // $('#head-bar').append(returnFormComboxHeadBar('Niên khóa',listkhoa , listniemkhoa, khoacurrent, 'changeKhoaandNghanh',120,20));
 
 
     if(document.getElementById('input-search')){
@@ -297,8 +291,8 @@ function LoadSuaGiangvien(data) {
     $('#button-bar').append(returnIconHome() + returnNameIndex('Quản lý giảng viên') + returnNameIndex('Sửa') +  returnReturnBtn());
     $('.Add-New-Row').append(returnFormLabel('Sửa giảng viên'));
     $('.Add-New-Row').append(returnFormLabelInfo('Mã giảng viên',data.MaNV));
-    // $('.Add-New-Row').append(returnFormLabelInfo('Nghành',listtennghanh[listmanganh.indexOf(nghanhcurrent)]));
-    // $('.Add-New-Row').append(returnFormInputSelect('Nghành', 'xxxx' , listmanganh, listtennghanh, nghanhcurrent));
+    // $('.Add-New-Row').append(returnFormLabelInfo('Ngành',listtennghanh[listmanganh.indexOf(nghanhcurrent)]));
+    // $('.Add-New-Row').append(returnFormInputSelect('Ngành', 'xxxx' , listmanganh, listtennghanh, nghanhcurrent));
 
     $('.Add-New-Row').append(returnFormInputTextLength('Tên',data.TenNV ));
     $('.Add-New-Row').append(returnFormInputTime('Ngày sinh',2,getDateFormatx(data.NgaySinh)));
@@ -324,9 +318,17 @@ function EventAdminClick(event) {
             LoadSuaGiangvien(listinfoitem[currentrowtable])
         }
         if(x.id == 'xoax'){
-            xhttp.open("GET", "/api/xoagv?MaGV="+listinfoitem[currentrowtable].MaNV, false);
-            xhttp.send();
-            console.log(listinfoitem[currentrowtable].MaNV);
+        
+            if (confirm('Bạn có muốn xóa giảng viên này không?')) {
+                // Save it!
+                xhttp.open("GET", "/api/xoagv?MaGV="+listinfoitem[currentrowtable].MaNV, false);
+                xhttp.send();
+                console.log(listinfoitem[currentrowtable].MaNV);
+              } else {
+                // Do nothing!
+             
+              }
+    
         }
     }else if(x.className == "add_new_btn" || x.parentNode.className == "add_new_btn" || x.parentNode.parentNode.className == "add_new_btn" ||  x.parentNode.parentNode.parentNode.className == "add_new_btn"){
         // LoadAddFormGiangvien();

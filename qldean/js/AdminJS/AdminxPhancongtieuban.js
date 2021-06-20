@@ -143,8 +143,8 @@ function LoadListTieuban(data) {
     $('.btn-follow-row').empty();
     $('.nav-page').empty();
 
-    $('#head-bar').append(returnFormComboxHeadBar('Nghành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
-    $('#head-bar').append(returnFormComboxHeadBar('Niêm khóa',listkhoa , listniemkhoa, khoacurrent, 'changeKhoaandNghanh',120,20));
+    $('#head-bar').append(returnFormComboxHeadBar('Ngành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
+    $('#head-bar').append(returnFormComboxHeadBar('Niên khóa',listkhoa , listniemkhoa, khoacurrent, 'changeKhoaandNghanh',120,20));
 
     $('#button-bar').append(returnIconHome() + returnNameIndex('Phụ trách')  + returnNameIndex('Tiểu ban') );
 

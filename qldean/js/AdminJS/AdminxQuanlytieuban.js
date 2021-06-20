@@ -271,8 +271,8 @@ function LoadListTieuban(data) {
     $('.nav-page').empty();
 
     $('#button-bar').append(returnIconHome() + returnNameIndex('Quản lý tiểu ban') +  returnAddBtn());
-    $('#head-bar').append(returnFormComboxHeadBar('Nghành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
-    $('#head-bar').append(returnFormComboxHeadBar('Niêm khóa',listkhoa , listniemkhoa, khoacurrent, 'changeKhoaandNghanh',120,20));
+    $('#head-bar').append(returnFormComboxHeadBar('Ngành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
+    $('#head-bar').append(returnFormComboxHeadBar('Niên khóa',listkhoa , listniemkhoa, khoacurrent, 'changeKhoaandNghanh',120,20));
     
     if(document.getElementById('input-search')){
     }else{
@@ -302,8 +302,8 @@ function LoadAddFormTieuban(maTB){
     $('#head-bar').empty();
     $('#button-bar').append(returnIconHome() + returnNameIndex('Quản lý tiểu ban') + returnNameIndex('Thêm mới') +  returnReturnBtn());
     khoacurrent = nienkhoahientai;
-    $('#head-bar').append(returnFormComboxHeadBar('Nghành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
-    $('#head-bar').append(returnFormComboxHeadBar('Niêm khóa',listkhoa , listniemkhoa, khoacurrent, 'changeKhoaandNghanh',120,20));
+    $('#head-bar').append(returnFormComboxHeadBar('Ngành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
+    $('#head-bar').append(returnFormComboxHeadBar('Niên khóa',listkhoa , listniemkhoa, khoacurrent, 'changeKhoaandNghanh',120,20));
     $('.Add-New-Row').append(returnFormLabelInfo('Mã tiểu ban',maTB));
     $('.Add-New-Row').append(returnFormInputTime('Thời gian',2,''));
     $('.Add-New-Row').append(returnFormInputSelect('Chọn ca', 'chonca' , ['SA','CH'], ['ca sáng', 'ca chiều'], 'SA'));
@@ -437,8 +437,10 @@ function EventAdminClick(event) {
             console.log(currentrowtable)
             LoadSuaTieuban(listinfoitem[currentrowtable])
         }else if(x.id == "xoax"){
+            if (confirm('Bạn có muốn xóa tiểu ban này không?')) {
             xhttp.open("GET", "/api/xoatb?maTB="+listinfoitem[currentrowtable].MaTB, false);
             xhttp.send();
+            }
         }
     }else if(x.className == "add_new_btn" || x.parentNode.className == "add_new_btn" || x.parentNode.parentNode.className == "add_new_btn" ||  x.parentNode.parentNode.parentNode.className == "add_new_btn"){
         loadAddListTieuban();

@@ -143,12 +143,12 @@ function LoadListHuongdan(data) {
 
     
 
-    $('#head-bar').append(returnFormComboxHeadBar('Nghành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
-    $('#head-bar').append(returnFormComboxHeadBar('Niêm khóa',listkhoa , listniemkhoa, khoacurrent, 'changeKhoaandNghanh',120,20));
+    $('#head-bar').append(returnFormComboxHeadBar('Ngành',listmanganh, listtennghanh, nghanhcurrent, 'changeKhoaandNghanh',250,0));
+    $('#head-bar').append(returnFormComboxHeadBar('Niên khóa',listkhoa , listniemkhoa, khoacurrent, 'changeKhoaandNghanh',120,20));
     if(TTmokhoamoi == 1) $('#head-bar').append( '<a href="/admin/quanlysinhvien?mokhoamoi='+nienkhoahientai+'">'+ returnAddBtnLeftLabel('Mở Khóa mới') + '</a>');
 
     $('#button-bar').append(returnIconHome() + returnNameIndex('Phụ trách')  + returnNameIndex('Hướng dẫn') );
-    $('.chose-bar').append(returnSearchForm('Nhập GPA tối thiểu','Lọc') );
+    $('.chose-bar').append(returnSearchFormNumber('Nhập GPA tối thiểu','Lọc') );
     document.getElementById('input-search').value = GPAtemp;
 
     $('#table_data').append(returnTable(tieudeBangHD,data));

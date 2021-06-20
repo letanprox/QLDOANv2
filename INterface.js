@@ -48,6 +48,12 @@ function returnSearchForm_(str,str_,va) {
            '<button  id="refresh-index"  style="background-color: slateblue;" type="submit">Làm mới</button>'
 }
 
+function returnSearchFormNumber(str,str_) {
+    return '<input  style="width: 30px; float:left"  class="form-control" id="input-search" type="number" oninput="changesearch(this.value)" src="" alt="" placeholder="'+str+'">'+
+        //    '<button id="search-index" style="background-color: tomato;" type="submit">'+str_+'</button>'+
+           '<button  id="refresh-index"  style="background-color: tomato;" type="submit">'+str_+'</button>'
+}
+
 function returnTable(listLabel, data) {
     var element = ' <thead class="thead-dark"><tr>';
     for(var i = 0; i < listLabel.length; i++){

@@ -45,7 +45,7 @@ var xhttp = new XMLHttpRequest();
                     tol_page =  Math.ceil(data[0][0]['Number'] / 10); 
                     console.log(data)
                     listinfoitem = data[1][0];
-                    LoadListTieuban(data[1][0]);
+                    LoadListTieuban(chuyendoiBangtieuban(data[1][0]) );
                 }
                 if(String(this.responseURL).includes('api/danhsach-chamdiem-tieuban')){
                     var data = JSON.parse(this.responseText);
@@ -119,6 +119,14 @@ function chuyendoiBangchamdiemtieuban(data){
         listchamdiemtieuban.push({MaSV: String(data[i].MaSV) , TenSV: String(data[i].TenSV), MaLop: String(data[i].MaLop) , MaDoan: String(data[i].MaDA), TenDA: String(data[i].TenDA) , Diem: diem  })
     }
     return listchamdiemtieuban;
+}
+
+function chuyendoiBangtieuban(data){
+    var listtieuban = [];
+    for(let i = 0; i < data.length; i++){
+        listtieuban.push({MaTB: String(data[i].MaTB) , Ngay: getDateFormat(String(data[i].Ngay)), Ca: String(data[i].Ca)  })
+    }
+    return listtieuban;
 }
 
 
@@ -273,6 +281,10 @@ function LoadChamdiemtieuban(infosv,infodoan,infodiem,infobaocaofile){
 }
 
 
+function CapNhatDiem(){
+    $('#number-diem').empty();
+    $('#number-diem').append(DiemCham);
+}
 
 
 //CLICK-----------------------------------------------

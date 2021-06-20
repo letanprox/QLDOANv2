@@ -1,0 +1,10 @@
+khi 2 thằng MaGVPB vs MaTB null 
+	khi DiemHD <4
+		<< F
+	else << Đang báo cáo hướng dẫn (có thể null)
+khi mà MaGVPB <> null and MaTB null 
+	DiemPB<4 <<F
+	else << Đang báo cáo phản biện
+khi mà MaTB<> null 
+	DiemTB<4 << F
+	else << đang báo cáo tiểu ban

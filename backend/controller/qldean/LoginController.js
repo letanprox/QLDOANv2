@@ -7,12 +7,11 @@ module.exports = async (callback, scanner) => {
     let Model = scanner.inleModel;
     let head_params = scanner.head_params;
 
-
-    //call CheckLogin('GVCN006','GVCN006#19871114')
+    //call CheckLogin('GVCN006','GVCN006#131298')
     //call CheckLogin('QL001','QL001#14111987')
 
-//     -- call CheckLogin('QL001','QL001@010621'); 
-//     -- call CheckLogin('GVCN006','GVCN006@19871114')
+//     -- call CheckLogin('QL001','QL001@160621'); 
+//     -- call CheckLogin('GVCN006','GVCN006@131298')
 //    call CheckLogin('N17DCCN002','N17DCCN002@230621')
    
 //    #ddmmyy -.-
@@ -25,7 +24,7 @@ module.exports = async (callback, scanner) => {
         console.log(username,pass)
 
         let count = await Model.InleSQL("call CheckLogin('"+username+"','"+pass+"')");
-
+        console.log("call CheckLogin('"+username+"','"+pass+"')")
         console.log(count)
 
         let data = [];
