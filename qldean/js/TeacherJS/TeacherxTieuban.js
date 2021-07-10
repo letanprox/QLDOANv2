@@ -22,9 +22,6 @@ var tieudeBangTieuban =  ['Tiểu ban','Ngày','Ca'];
 var tieudeBangChamdiemtieuban =  ['Mã sinh viên','Tên sinh viên', 'Lớp', 'Mã đồ án' , 'Tên đồ án'  , 'Điểm' ];
 
 
-var listPhutrachTitle = ['Mã sinh viên','Tên sinh viên', 'Lớp', 'Email','Mã đồ án' , 'Tên đồ án' ]
-var listPhutrachdata = [{MaSV:'SV02', Ten:'Ngoc minh', Lop: 'ATTT', Email:'ngocminh@gmail.com',MaDA: 'DA44', TenDA:'Hack Wifi'}]
-
 
 var listButtonpk = ['Sửa','Xóa'];
 var listIdBtnTable = [ 'suax' , 'xoax'];
@@ -58,7 +55,7 @@ var xhttp = new XMLHttpRequest();
                 if(String(this.responseURL).includes('api/loadChamdiemtieuban')){
                     var data = JSON.parse(this.responseText);
                     console.log(data)
-                    LoadChamdiemtieuban(data[0][0][0],data[1][0][0],data[2][0][0],data[3][0][0]);
+                    LoadChamdiemtieuban(data[0][0][0],data[1][0][0],data[2][0][0],data[3][0][0],data[4][0][0]);
                     console.log(data)
                 }
 
@@ -181,7 +178,10 @@ function LoadListChamdiemTieuban(data) {
 }
 
 
-function LoadChamdiemtieuban(infosv,infodoan,infodiem,infobaocaofile){
+function LoadChamdiemtieuban(infosv,infodoan,infodiem,infobaocaofile,Diem_){
+
+    console.log(Diem_)
+
     currentPage = 3;
     $('#button-bar').show();
     $('.chose-bar').hide();
@@ -270,8 +270,8 @@ function LoadChamdiemtieuban(infosv,infodoan,infodiem,infobaocaofile){
 
 
 
-    if(String(infosv.DiemTB) === 'null') DiemCham = '__';
-    else DiemCham = Number(infosv.DiemTB);
+    if(String(Diem_.Diem) === 'null') DiemCham = '__';
+    else DiemCham = Number(Diem_.Diem);
     $('.Detail-project').append(
         '<span id="diem-doan">'+
             '<div id="btn-update-diem">cập nhật</div>'+

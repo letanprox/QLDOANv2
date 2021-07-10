@@ -492,6 +492,8 @@ module.exports = async (callback, scanner) => {
         let result1 = await Model.InleSQL("call ShowInfor_DA('"+MaGV+"','"+MaDoan+"',"+MaCT+");"); 
         let result2 = await Model.InleSQL("call ShowFullDiem('"+MaSV+"');"); 
         let result3 = await Model.InleSQL("call ShowFile_BaoCao('"+MaPC+"');"); 
+        let result4 = await Model.InleSQL("call ShowDiem('"+MaPC+"', '"+MaGV+"')"); 
+       
 
         console.log("call ShowInfor_SVTB('"+MaSV+"')");
 
@@ -500,6 +502,7 @@ module.exports = async (callback, scanner) => {
         data.push(result1);
         data.push(result2);
         data.push(result3);
+        data.push(result4);
         callback(JSON.stringify(data), 'application/json');
     }
     if(index === 'chamDiemTieuban'){
