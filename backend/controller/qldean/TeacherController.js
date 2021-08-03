@@ -74,7 +74,7 @@ module.exports = async (callback, scanner) => {
 
         if(String(ischangefile) !== 'x'){ 
             await Model.InleSQL("call DELETE_FileHD("+NUMBERFILE+")");
-            console.log("call DELETE_FileHD("+NUMBERFILE+")")
+            console.log("call DELETE_FileHD("+NUMBERFILE+")");
         }
         console.log("call Update_DAFull('"+MaDoan+"', '"+TenDoan+"', '"+chuyennganh+"','"+MaGV+"','"+ngay+"','"+infotep+"','"+filedoc+"')")
         let  result1 = await Model.InleSQL("call Update_DAFull('"+MaDoan+"', '"+TenDoan+"', '"+chuyennganh+"','"+MaGV+"','"+ngay+"','"+infotep+"','"+filedoc+"')");
@@ -150,7 +150,7 @@ module.exports = async (callback, scanner) => {
                 }
             }else{
                 MaChuyennganh = listChuyennganh[0].MaCN;
-                fs.appendFile("controller/qldean/Text/TeacherStatus.txt", String(MaGV+','+MaChuyennganh+','), function (err) {
+                fs.appendFile("controller/qldean/Text/TeacherStatus.txt",  "\n" + String(MaGV+','+MaChuyennganh+','), function (err) {
                     if (err) return console.log(err);
                   })
             }
