@@ -120,6 +120,12 @@ function loadInfoTB(){
 function LoadListTieuban(data) {
     console.log(data)
 
+    let data1 = [];
+    for(var i = 0; i < data.length; i++) {
+        data1.push({MaSV:data[i].MaSV,TenSV: data[i].TenSV ,Email:data[i].Email,DiemPB: Math.ceil10(data[i].DiemPB,-1), MaTB: data[i].MaTB , Diemtb: Math.ceil10(Number(data[i].Diemtb,-1)),slDiem: data[i].slDiem});
+    }
+
+
     listmanganh = [];
     listtennghanh = [];
     for(let i = 0;i < listnghanh.length; i++){
@@ -148,7 +154,7 @@ function LoadListTieuban(data) {
 
     $('#button-bar').append(returnIconHome() + returnNameIndex('Phụ trách')  + returnNameIndex('Tiểu ban') );
 
-    $('#table_data').append(returnTable(tieudeBangTB,data));
+    $('#table_data').append(returnTable(tieudeBangTB,data1));
     $('.btn-follow-row').append(returnButtonTable(tennutBangTB,idnutBangTB));
     $('.nav-page').append(returNavForm(tol_page+1, page_num));
 }
