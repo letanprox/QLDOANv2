@@ -8,7 +8,7 @@ module.exports = class Connect{
         this.hostsql = 'localhost';
         this.user = 'root';
         this.password = '';
-        this.database = 'qldoan';
+        this.database = 'qldoanv3';
     }
     //MONGO CONNECT
     async connectMongoDB (callback){
