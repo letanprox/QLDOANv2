@@ -224,6 +224,7 @@ function EventAdminClick(event) {
           } else {
           }
     }else{
+        if(String(document.getElementById('input-number').value).length == 10){
 
         for(var i = 0; i < labellist.length; i++){
             if(labellist[i] == 'day'){
@@ -238,6 +239,10 @@ function EventAdminClick(event) {
 
         document.getElementById('info-account').style.width = currentwidth+'px';
         document.getElementById('contain-account').style.width = currentwidth*2+'px';
+
+        }else{
+            alert('Vui lòng nhập đúng SDT!')
+        }
       
     }
 }
