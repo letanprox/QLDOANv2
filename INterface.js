@@ -48,10 +48,11 @@ function returnSearchForm_(str,str_,va) {
            '<button  id="refresh-index"  style="background-color: slateblue;" type="submit">Làm mới</button>'
 }
 
-function returnSearchFormNumber(str,str_) {
+function returnSearchFormNumber(str,str_,str__) {
     return '<input  style="width: 30px; float:left"  class="form-control" id="input-search" type="number" oninput="changesearch(this.value)" src="" alt="" placeholder="'+str+'">'+
         //    '<button id="search-index" style="background-color: tomato;" type="submit">'+str_+'</button>'+
-           '<button  id="refresh-index"  style="background-color: tomato;" type="submit">'+str_+'</button>'
+           '<button  id="refresh-index"  style="background-color: tomato;" type="submit">'+str_+'</button>'+
+           '<button  id="luu-index"  style="background-color: green;" type="submit">'+str__+'</button>'
 }
 
 function returnTable(listLabel, data) {

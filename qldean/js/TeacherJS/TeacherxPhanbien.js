@@ -218,10 +218,6 @@ function LoadChamdiemphanbien(infosv,infodoan,infodiem,infobaocaofile){
         '</span>'
     )
 
-
-
-
-
     if(String(infosv.DiemPB) === 'null') DiemCham = '__';
     else DiemCham = Number(infosv.DiemPB);
     $('.Detail-project').append(
@@ -230,15 +226,14 @@ function LoadChamdiemphanbien(infosv,infodoan,infodiem,infobaocaofile){
             '<div id="info-diem-label"><span id="diem-label">Điểm: </span><span id="number-diem">'+DiemCham+'</span></div>'+
         '</span>'
     )
-
-    
-    
 }
 
 
 function CapNhatDiem(){
     $('#number-diem').empty();
+    if(DiemCham < 10)
     $('#number-diem').append(DiemCham);
+    else alert('Điểm không vượt quá 10')
 }
 
 //CLICK-----------------------------------------------

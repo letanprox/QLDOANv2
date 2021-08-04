@@ -250,10 +250,10 @@ module.exports = async (callback, scanner) => {
         let ngay = String(head_params.get('ngay')).replace('T17:00:00.000Z','');
         let ca = head_params.get('ca');
 
-        let result1 = await Model.InleSQL("call ComboBox_PhanCongGVTB('"+MaNghanh+"', '"+ngay+"', '"+ca+"')");
+        let result1 = await Model.InleSQL("call ComboBox_PhanCongGVTB('"+MaNghanh+"','"+MaTB+"', '"+ngay+"', '"+ca+"')");
         let result2 = await Model.InleSQL("call ShowInfor_TB('"+MaTB+"')");
 
-        console.log("call ShowInfor_TB('"+MaTB+"')")
+        console.log("call ShowInfor_TB('"+MaTB+"')");
 
         let data = [];
         data.push(result1);

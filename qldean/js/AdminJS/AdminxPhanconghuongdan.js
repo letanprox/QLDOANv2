@@ -148,7 +148,7 @@ function LoadListHuongdan(data) {
     if(TTmokhoamoi == 1) $('#head-bar').append( '<a href="/admin/quanlysinhvien?mokhoamoi='+nienkhoahientai+'">'+ returnAddBtnLeftLabel('Mở Khóa mới') + '</a>');
 
     $('#button-bar').append(returnIconHome() + returnNameIndex('Phụ trách')  + returnNameIndex('Hướng dẫn') );
-    $('.chose-bar').append(returnSearchFormNumber('Nhập GPA tối thiểu','Lọc') );
+    $('.chose-bar').append(returnSearchFormNumber('Nhập GPA tối thiểu','Lọc','Lưu') );
     document.getElementById('input-search').value = GPAtemp;
 
     $('#table_data').append(returnTable(tieudeBangHD,data));
@@ -177,42 +177,7 @@ function LoadPhancongHuongdan(data) {
     $('.Add-New-Row').empty();
 
     $('#button-bar').append(returnIconHome() + returnNameIndex('Phụ trách')  + returnNameIndex('Hướng dẫn') + returnNameIndex('Phân công')  + returnReturnBtn());
-
-    // $('.Add-New-Row').append(returnLormInfo( ['Mã sinh viên: '+InfoSV.MaSV,'Tên sinh viên: '+InfoSV.TenSV]));
-    // $('.Add-New-Row').append(returnLormInfo( ['Lớp: '+InfoSV.MaLop,'GPA: '+InfoSV.GPA]));
-    // $('.Add-New-Row').append(returnLormOneInfo('SDT: '+InfoSV.SDT));
-    // $('.Add-New-Row').append(returnLormOneInfo('Email: '+InfoSV.Email));
-
-    // if(String(InfoSV.TenDA) != '')
-    // $('.Add-New-Row').append(returnLormInfo(['Mã đồ án: '+InfoSV.MaDA ,'Tên đồ án: '+InfoSV.TenDA]));
-    // else
-    // $('.Add-New-Row').append(returnLormInfo(['Mã đồ án: '+InfoSV.MaDA ,'Tên đồ án: Chưa đặt tên']));
-
-    // if(String(InfoSV.Diem) != '')
-    // $('.Add-New-Row').append(returnLormOneInfo('Điểm hướng dẫn: '+InfoSV.Diem));
-    // else
-    // $('.Add-New-Row').append(returnLormOneInfo('Điểm hướng dẫn: Chưa chấm'));
-
-    // MaDAtemp = InfoSV.MaDA;
-    // MaSVtemp = InfoSV.MaSV;
-    // NgaySinhtemp = InfoSV.NgaySinh;
-
-    // let listGVHD = [];
-    // let choseGV;
-
-    // for(let i = 0; i < listgvhd.length; i++){
-    //     if(String(listgvhd[i].MaGV) ===  String(MaGVtemp)) choseGV = listgvhd[i].MaGV+' - '+listgvhd[i].TenGV
-    //     listGVHD.push( listgvhd[i].MaGV+' - '+listgvhd[i].TenGV)
-    // }
-       
-    // if(String(MaGVtemp) == 'null')
-    // $('.Add-New-Row').append(returnLormInputSelect('Phân công giáo viên hướng dẫn: ',listGVHD ,listgvhd[0].MaGV+' - '+listgvhd[0].TenGV));
-    // else
-    // $('.Add-New-Row').append(returnLormInputSelect('Phân công giáo viên hướng dẫn: ',listGVHD ,choseGV));
-    // $('.Add-New-Row').append(returnLormBtn(nutPhancongHD,maunutPhancongHD,idnutPhancongHD));
-
     $('.Add-New-Row').empty();
-
 
     $('#detail-bar').empty();
 

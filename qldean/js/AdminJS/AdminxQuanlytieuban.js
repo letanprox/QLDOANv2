@@ -70,21 +70,7 @@ var xhttp = new XMLHttpRequest();
                     nienkhoahientai =  data[6][0]['nienkhoahientai'];
                     LoadListTieuban(listinfoitem);
                 }
-                // //Dữ liệu bảng tiểu ban
-                // if(String(this.responseURL).includes('api/danhsachdulieutieuban')){
-                //     var data = JSON.parse(this.responseText);
-                //     tol_page =  Math.ceil(data[0][0]["CountList_TB('"+khoacurrent+"','"+nghanhcurrent+"')"] / 10); 
-                //     listinfoitem = data[1][0];
-                //     LoadListDataTieuban(listinfoitem);
-                // }
-                //Dữ liệu tìm tiểu ban
-                // if(String(this.responseURL).includes('api/timmatb')){
-                //     var data = JSON.parse(this.responseText);
-                //     console.log(data)
-                //     tol_page = Math.ceil(data[0][0]["dem"] / 10);  
-                //     listinfoitem = data[1][0];
-                //     LoadListDataTieuban(listinfoitem);
-                // }
+
                 //Load điều kiện thêm tiểu ban
                 if(String(this.responseURL).includes('api/dieukienthemtb')){
                     var data = JSON.parse(this.responseText);
@@ -144,22 +130,11 @@ var xhttp = new XMLHttpRequest();
 
 //LOAD DATA TIỂU BAN----------------------------------------------------
 function loadListTieuban(){
-    // currentlist = 0;
-    // textsearch = '';
+
     xhttp.open("GET", "/api/danhsachtieuban?page="+page_num+"&Khoa="+khoacurrent+"&MaNghanh="+String(nghanhcurrent)+"&MaAdmin="+MaAdmin+"&textsearch="+textsearch, false);
     xhttp.send();
 }
-// function loadListDataTieuban(){
-//     currentlist = 1;
-//     textsearch = '';
-//     xhttp.open("GET", "/api/danhsachdulieutieuban?page="+page_num+"&Khoa="+khoacurrent+"&MaNghanh="+String(nghanhcurrent)+"&MaAdmin="+MaAdmin, false);
-//     xhttp.send();
-// }
-// function loadListSearchTieuban(){
-//     currentlist = 2;
-//     xhttp.open("GET", "/api/timmatb?page="+page_num+"&Khoa="+khoacurrent+"&MaNghanh="+(nghanhcurrent)+"&MaAdmin="+MaAdmin+"&textsearch="+textsearch, true);
-//     xhttp.send();
-// }
+
 function loadAddListTieuban() {
     console.log(nienkhoahientai)
     xhttp.open("GET", "/api/dieukienthemtb?khoa="+nienkhoahientai, false);
