@@ -3,7 +3,7 @@ module.exports = class Connect{
     constructor(){
         // HOST DOMAIN
         this.host = 'localhost';
-        this.portSERVER = 7000;
+        this.portSERVER = 3000;
         // MONGO DB
         this.hostsql = 'localhost';
         this.user = 'root';

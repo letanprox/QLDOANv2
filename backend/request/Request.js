@@ -8,7 +8,7 @@ const route = require("./Route");
 //RETURN REQUEST BUNDLE
 module.exports =  (req,returnRoute) => {
 
-    if(req.headers.host === "localhost:7000") req.headers.host = "www.qldean.com";
+    if(req.headers.host === "localhost:3000") req.headers.host = "www.qldean.com";
 
     let filePath = route(req.headers.host,req.method,req.url,returnRoute);
     let index;
