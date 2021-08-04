@@ -199,23 +199,42 @@ var xhttp = new XMLHttpRequest();
 
                 
                 if(String(this.responseURL).includes('api/add-phancong-tailieu')){
-                    if(String(this.responseText) == '"that bai"')alert('Fail')
-                    else {
-                        loadListTailieu()
-                    };
+                    var data = JSON.parse(this.responseText);
+                    console.log("xxxxxx")
+                    console.log(data[0][0]['status'])
+
+                    if(Number(data[0][0]['status']) === 1){
+                        alert('Thành công!')
+                    }else{
+                        alert('Ngoài thời gian phân công đồ án!')
+                    }
                 }  
 
 
                 if(String(this.responseURL).includes('api/check-phancong-tailieu')){
+  
                     var data = JSON.parse(this.responseText);
-                    console.log(data)
-                    if (confirm('Sinh viên này đã được phân công đồ án, bạn có muốn thay đổi?')) {
-                        // Save it!
-                         xhttp.open("GET", "/api/add-phancong-tailieu?MaDoan="+MaDoan+"&MaGV="+MaGV+"&MaSV="+MaSV+"&MaCT="+MaCT, false);
-                        xhttp.send();    
-                      } else {
-                        // Do nothing!
-                      }
+                    console.log('xxxx')
+                    console.log(data )
+
+                    if(Number(data[0]['dem']) === 0){
+
+                        xhttp.open("GET", "/api/add-phancong-tailieu?MaDoan="+MaDoan+"&MaGV="+MaGV+"&MaSV="+MaSV+"&MaCT="+MaCT, false);
+                        xhttp.send();   
+
+
+
+                    }else{
+
+                        if (confirm('Sinh viên này đã được phân công đồ án, bạn có muốn thay đổi?')) {
+                            // Save it!
+                            xhttp.open("GET", "/api/add-phancong-tailieu?MaDoan="+MaDoan+"&MaGV="+MaGV+"&MaSV="+MaSV+"&MaCT="+MaCT, false);
+                            xhttp.send();    
+                          } else {
+                            // Do nothing!
+                          }
+
+                    }
                     
                 } 
         }
@@ -1031,11 +1050,9 @@ async function EventTeacherClick(event) {
     ///PHAN CONG TAILIEUBTN
     else if(x.className == "phancong-sinhvien-doan-btn"){
         console.log(MaDoan,MaGV,MaSV,MaCT)
-
         xhttp.open("GET", "/api/check-phancong-tailieu?MaSV="+MaSV, false);
         xhttp.send();    
     }
-    
     ///UPLOAD FILE BTN
     else if(x.id == "btn-upfile-label"){
         $('.Form-input-file').show();
@@ -1060,4 +1077,3 @@ async function EventTeacherClick(event) {
 }
 //FIRST---------------------------------------------------------
 loadListDoan();
-

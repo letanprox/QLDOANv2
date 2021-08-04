@@ -225,6 +225,8 @@ function LoadListTieuban(infodoan,infodiem,infotep,infogvtb) {
 
     if(String(infotep.Tep_Goc) !== 'null' && String(infotep.Tep_Goc) !== ''){
         $('.add-file-add-row').hide();
+    }else{
+        $(".item-add-file-upload").hide();
     }
 
     $(".input-more-checkbox").change(function() {
@@ -322,6 +324,9 @@ async function EventTeacherClick(event) {
         console.log('delete');
         $("#check-box-baocao").hide();
         $('.add-file-add-row').show();
+
+        document.getElementById('cap-nhat-baocao').style.opacity = '0.2';
+
     }else if(x.parentNode.parentNode.parentNode.className == 'item-add-file-upload'){
         // x.parentNode.parentNode.parentNode.parentNode.removeChild(x.parentNode.parentNode.parentNode);
         $(".item-add-file-upload").hide();
@@ -329,6 +334,8 @@ async function EventTeacherClick(event) {
         console.log('deletxe')
         $("#check-box-baocao").hide();
         $('.add-file-add-row').show();
+
+        document.getElementById('cap-nhat-baocao').style.opacity = '0.2';
         
     }else if(x.className == "return_btn" || x.parentNode.className == "return_btn" || x.parentNode.parentNode.className == "return_btn" ||  x.parentNode.parentNode.parentNode.className == "return_btn"){
         
@@ -358,8 +365,6 @@ async function EventTeacherClick(event) {
 
     }else if(x.id == "cap-nhat-baocao" ){
 
-
-
         if(isupdatefile == true){
 
             console.log('upfile')
@@ -376,10 +381,7 @@ async function EventTeacherClick(event) {
 
         }
 
-
-
         if(document.getElementById('cap-nhat-baocao').style.opacity === '1'){
-
             var namefilex;
             if(isupdatefile == true){
                 namefilex = MaSV+MaDA+getCurrentTimex().replace(/\D/g,'')+contentfile['name'];

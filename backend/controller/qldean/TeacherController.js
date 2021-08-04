@@ -348,7 +348,7 @@ module.exports = async (callback, scanner) => {
     }
     if(index === 'check-phancong-tailieu'){
         let MaSV = head_params.get('MaSV');
-        let  result = await Model.InleSQL("select count(*) as dem  from phancongdoan where MaSV ='"+MaSV+"';");
+        let  result = await Model.InleSQL("select count(*) as dem  from phancongdoan where MaSV ='"+MaSV+"' and MaDA is not null;");
         callback(JSON.stringify(result), 'application/json');
     }
 

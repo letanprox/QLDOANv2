@@ -125,6 +125,10 @@ var xhttp = new XMLHttpRequest();
                         alert('Không được trùng mã Giảng viên')
                     else loadListTieuban();
                 }
+
+                // if(String(this.responseText) == "IsEditTB"){
+
+                // }
         }
     };
 
@@ -398,10 +402,29 @@ function EventAdminClick(event) {
     var x = event.target;
     if( x.parentNode.className == "no-color-lum-table"){
         if(khoacurrent == nienkhoahientai){
-        $('.yes-color-lum-table').removeClass('yes-color-lum-table').addClass('no-color-lum-table');
-        $('#no-color-btn-follow-row').attr("id", "yes-color-btn-follow-row");
-        x.parentNode.className = 'yes-color-lum-table';
-        currentrowtable = Number(x.parentNode.id.replace('collumtalbe-',''));
+
+            currentrowtable = Number(x.parentNode.id.replace('collumtalbe-',''));
+            maTB = listinfoitem[currentrowtable].MaTB;
+
+            $('.yes-color-lum-table').removeClass('yes-color-lum-table').addClass('no-color-lum-table');
+            x.parentNode.className = 'yes-color-lum-table';
+
+        $.getJSON("/api/IsEditTB?maTB="+maTB, function(result){
+            console.log(result);
+              
+            if(Number(result[0]['Number']) == 0){
+
+            $('.yes-color-lum-table').removeClass('yes-color-lum-table').addClass('no-color-lum-table');
+            $('#no-color-btn-follow-row').attr("id", "yes-color-btn-follow-row");
+            x.parentNode.className = 'yes-color-lum-table';
+
+            }else{
+                $('#yes-color-btn-follow-row').attr("id", "no-color-btn-follow-row");
+            }
+
+        });
+
+
         }
     }else if(x.parentNode.className == 'btn-follow-row'){
         if(x.id == "phancongx" ){
@@ -413,8 +436,8 @@ function EventAdminClick(event) {
             LoadSuaTieuban(listinfoitem[currentrowtable])
         }else if(x.id == "xoax"){
             if (confirm('Bạn có muốn xóa tiểu ban này không?')) {
-            xhttp.open("GET", "/api/xoatb?maTB="+listinfoitem[currentrowtable].MaTB, false);
-            xhttp.send();
+                xhttp.open("GET", "/api/xoatb?maTB="+listinfoitem[currentrowtable].MaTB, false);
+                xhttp.send();
             }
         }
     }else if(x.className == "add_new_btn" || x.parentNode.className == "add_new_btn" || x.parentNode.parentNode.className == "add_new_btn" ||  x.parentNode.parentNode.parentNode.className == "add_new_btn"){
@@ -452,6 +475,7 @@ function EventAdminClick(event) {
           } else {
           }
     }else{
+
         $('.yes-color-lum-table').removeClass('yes-color-lum-table').addClass('no-color-lum-table');
         $('#yes-color-btn-follow-row').attr("id", "no-color-btn-follow-row");
     }

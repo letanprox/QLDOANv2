@@ -283,9 +283,9 @@ function LoadChamdiemtieuban(infosv,infodoan,infodiem,infobaocaofile,Diem_){
 
 function CapNhatDiem(){
     $('#number-diem').empty();
-    if(DiemCham < 10)
+    if(DiemCham < 10 && DiemCham >= 0)
     $('#number-diem').append(DiemCham);
-    else alert('Điểm không vượt quá 10')
+    else alert('Điểm không vượt quá 10 hoặc nhỏ hơn 0')
 }
 
 

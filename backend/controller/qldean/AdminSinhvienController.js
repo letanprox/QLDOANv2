@@ -163,7 +163,7 @@ module.exports = async (callback, scanner) => {
     } else if (/\d/.test(TenSV)) {
         callback(JSON.stringify({ success: false, message: "Không nhập số trong tên" }), 'application/json');
         return;
-    } else if (NgaySinh.length == 0) {
+    } else if (NgaySinh !== "") {
         callback(JSON.stringify({ success: false, message: "Vui lòng nhập ngày sinh" }), 'application/json');
         return;
     } else if(Date.parse(NgaySinh) > Date.parse(date)) {
@@ -175,7 +175,7 @@ module.exports = async (callback, scanner) => {
     } else if (!/^\d+$/.test(SDT)) {
         callback(JSON.stringify({ success: false, message: "Không nhập chữ trong SĐT" }), 'application/json');
         return;
-    } else if (SDT.length < 7) {
+    } else if (SDT.length < 10) {
         callback(JSON.stringify({ success: false, message: "Vui lòng nhập đúng SĐT" }), 'application/json');
         return;
     } else if (GPA.length == 0) {

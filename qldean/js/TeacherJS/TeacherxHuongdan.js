@@ -53,8 +53,10 @@ var xhttp = new XMLHttpRequest();
                         // alert(data[0][0]['ThongBao'])
                         if(Number(data[0][0]['status']) == 1 ){
                             CapNhatDiem()
+                        }else if(Number(data[0][0]['status']) == -1){
+                            alert("Sinh viên này chưa nộp báo cáo!")
                         }else{
-                            alert('Đã quá thời gian chấm điểm')
+                            alert("Không trong thời gian gian báo cáo của tiểu ban này!")
                         }
       
                     };
@@ -237,9 +239,9 @@ function LoadChamdiemhuongdan(infosv,infodoan,infodiem,infobaocaofile){
 
 function CapNhatDiem(){
     $('#number-diem').empty();
-    if(DiemCham < 10)
+    if(DiemCham < 10 && DiemCham >= 0)
     $('#number-diem').append(DiemCham);
-    else alert('Điểm không vượt quá 10')
+    else alert('Điểm không vượt quá 10 hoặc nhỏ hơn 0')
 }
 
 //CLICK-----------------------------------------------

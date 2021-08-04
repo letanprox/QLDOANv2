@@ -182,7 +182,7 @@ module.exports = async (callback, scanner) => {
         }else if (!/^\d+$/.test(SDT)){
             callback(JSON.stringify({ success: false, message: "Không nhập chữ trong SĐT"}), 'application/json');
             return;
-        }else if (SDT.length> 15) {
+        }else if (SDT.length> 10) {
             callback(JSON.stringify({ success: false, message: "Vui lòng nhập đúng SĐT"}), 'application/json');
             return;
         }else if (email.length<10) {
@@ -229,7 +229,7 @@ module.exports = async (callback, scanner) => {
         }else if (!/^\d+$/.test(SDT)){
             callback(JSON.stringify({ success: false, message: "Không nhập chữ trong SĐT"}), 'application/json');
             return;
-        }else if (SDT.length> 15) {
+        }else if (SDT.length> 10) {
             callback(JSON.stringify({ success: false, message: "Vui lòng nhập đúng SĐT"}), 'application/json');
             return;
         }else if (email.length<10) {

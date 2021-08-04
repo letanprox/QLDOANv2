@@ -181,12 +181,31 @@ module.exports = async (callback, scanner) => {
         let MaNghanh = head_params.get('MaNganh');
 
         let today = new Date();
-        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        let date = today.getFullYear()+'-'+('0' + (today.getMonth()+1)).slice(-2)+'-'+ ('0' + (today.getDate())).slice(-2) ;
+
+
 
         if(Date.parse(ngay) < Date.parse(date)) {
             callback(JSON.stringify({ success: false, message: "Thời gian TB không thể trước ngày hiện tại"}), 'application/json');
             return;
+        }else if (ngay.includes('NaN')) {
+            callback(JSON.stringify({ success: false, message: "Vui lòng nhập ngày" }), 'application/json');
+            return;
+        }else if(Date.parse(ngay) == Date.parse(date)){
+            var hourcurrent = today.getHours();
+            if(ca === 'SA')
+                if(hourcurrent >= 7){
+                    callback(JSON.stringify({ success: false, message: "Quá thời gian quy định!" }), 'application/json');
+                    return;
+                }
+
+            if(ca === 'CH')
+                if(hourcurrent >= 13){
+                    callback(JSON.stringify({ success: false, message: "Quá thời gian quy định!" }), 'application/json');
+                    return;
+                }
         }
+
         // console.log("INSERT INTO `tieuban` (`MaTB`, `MaNganh`, `Ngay`, `Ca`) VALUES ('"+maTB+"', '"+MaNghanh+"', '"+ngay+"', '"+ca+"');");
         let result = await Model.InleSQL("INSERT INTO `tieuban` (`MaTB`, `MaNganh`, `Ngay`, `Ca`) VALUES ('"+maTB+"', '"+MaNghanh+"', '"+ngay+"', '"+ca+"');");
             if(String(result).includes('Duplicate entry') || String(result).includes('fail')){
@@ -194,6 +213,14 @@ module.exports = async (callback, scanner) => {
             }else{
                 callback(JSON.stringify({ success: true, message: "Thành công!"}), 'application/json');
             }
+    }
+
+
+    if (index === 'IsEditTB'){
+        let maTB = head_params.get('maTB');
+        let  result = await Model.InleSQL("SELECT IsEditTB('"+maTB+"') AS Number");
+
+        callback(JSON.stringify(result), 'application/json');
     }
 
     if (index === 'suatb'){
@@ -206,7 +233,10 @@ module.exports = async (callback, scanner) => {
         if(Date.parse(ngay) < Date.parse(date)) {
             callback(JSON.stringify({ success: false, message: "Thời gian TB không thể trước ngày hiện tại"}), 'application/json');
             return;
-        }
+        }else if (ngay !== '') {
+            callback(JSON.stringify({ success: false, message: "Vui lòng nhập ngày" }), 'application/json');
+            return;
+        } 
         // console.log("UPDATE `tieuban` SET `ngay` = '"+ngay+"' ,  `ca` = '"+ca+"' WHERE `tieuban`.`maTB` = '"+maTB+"'");
         let result1 = await Model.InleSQL("UPDATE `tieuban` SET `ngay` = '"+ngay+"' ,  `ca` = '"+ca+"' WHERE `tieuban`.`maTB` = '"+maTB+"'");
         if(String(result1).includes('Duplicate entry') || String(result1).includes('fail')){

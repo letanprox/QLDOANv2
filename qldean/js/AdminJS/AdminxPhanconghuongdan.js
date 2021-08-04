@@ -285,16 +285,14 @@ function EventAdminClick(event) {
             $('#yes-color-btn-follow-row').attr("id", "no-color-btn-follow-row");
         }
      
-
-   
     }else if(x.parentNode.className == "nav-page" ){
         page_num = Number(x.innerHTML)
         loadListHuongdan();
     } else if(x.parentNode.className == 'btn-follow-row'){
         if(x.id == "phancongx" ){
-            if(khoacurrent == nienkhoahientai){
-            MaGVtemp = listinfoitem[currentrowtable].MaGVHD;
-            loadPhancongHuongdan(listinfoitem[currentrowtable].MaSV);
+            if(khoacurrent == nienkhoahientai  && String(listinfoitem[currentrowtable].Diem) == ''){
+                MaGVtemp = listinfoitem[currentrowtable].MaGVHD;
+                loadPhancongHuongdan(listinfoitem[currentrowtable].MaSV);
             }
         }
     }else if(x.className === 'phancong-sinhvien-doan-btn'){
